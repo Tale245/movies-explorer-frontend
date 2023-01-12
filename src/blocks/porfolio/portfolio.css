@@ -1,0 +1,8 @@
+.portfolio {
+  margin: 0;
+}
+@media screen and (max-width: 620px) {
+  .portfolio {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,16 @@
+.porfolio__container_link {
+  margin: 0;
+  padding-top: 19px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e6e6;
+}
+@media screen and (max-width: 620px) {
+  .porfolio__container_link {
+    width: 294px;
+    padding-bottom: 11px;
+  }
+}
+.porfolio__container_link:last-of-type {
+  border-bottom: none;
+}

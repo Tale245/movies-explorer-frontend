@@ -1,0 +1,22 @@
+.about-project__text {
+  margin: 0;
+  font-family: inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+@media screen and (max-width: 920px) {
+  .about-project__text {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .about-project__text {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
