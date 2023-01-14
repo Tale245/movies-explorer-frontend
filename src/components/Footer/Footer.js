@@ -9,7 +9,7 @@ const Footer = () => {
                 <p className="footer__paragraph">Учебный проект Яндекс.Практикум х BeatFilm.</p>
                 </div>
                 <div className="footer__container_text-communication">
-                    <p className="footer__author">&copy; 2020</p>
+                    <p className="footer__author">&copy; 2023</p>
                     <div className="footer__container_links">
                         <a href="https://practicum.yandex.ru" className="footer__link">Яндекс.Практикум</a>
                         <a href="https://github.com/Tale245" className="footer__link">Github</a>

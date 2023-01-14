@@ -1,0 +1,12 @@
+.footer__container_links {
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+@media screen and (max-width: 620px) {
+  .footer__container_links {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+}

@@ -1,0 +1,15 @@
+.moviesCard__like-ico {
+  margin: 0;
+  width: 14px;
+  height: 12px;
+  border: none;
+  background: none;
+  outline: none;
+  background-image: url(../../../images/like-ico.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+.moviesCard__like-ico:hover{
+  background-image: url(../../../images/delete-eco.svg)
+}

@@ -1,0 +1,6 @@
+.moviesCard__container_description {
+  margin: 0;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
