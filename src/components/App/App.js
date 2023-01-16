@@ -45,7 +45,16 @@ function App() {
         />
         <Route path="/signup" element={<Register />} />
         <Route path="/signin" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              popupMenuOpen={popupMenuOpen}
+              isPopupMenuOpen={isPopupMenuOpen}
+              closeAllPopups={closeAllPopups}
+            />
+          }
+        />
         <Route path="/PageNotFound" element={<PageNotFound />} />
       </Routes>
     </div>

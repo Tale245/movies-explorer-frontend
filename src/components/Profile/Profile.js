@@ -1,12 +1,16 @@
 import React from "react";
-import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./Profile.css";
 
-const Profile = () => {
+const Profile = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups }) => {
   return (
     <>
-      <Header />
+      <Header
+        whiteTheme={true}
+        popupMenuOpen={popupMenuOpen}
+        isPopupMenuOpen={isPopupMenuOpen}
+        closeAllPopups={closeAllPopups}
+      />
       <section className="profile">
         <div className="profile__container">
           <h1 className="profile__title">Привет, Виталий!</h1>
