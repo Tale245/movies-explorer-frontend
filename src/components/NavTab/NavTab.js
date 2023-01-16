@@ -1,7 +1,7 @@
 import React from "react";
 import "./NavTab.css";
 
-const NavTab = ({title}) => {
+const NavTab = ({ title }) => {
   return (
     <div className="navTab__container_title">
       <h2 className="navTab__title">{title}</h2>

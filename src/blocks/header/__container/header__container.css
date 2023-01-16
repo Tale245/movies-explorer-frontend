@@ -1,18 +1,18 @@
 .header__container {
-    margin: 0 auto;
-    max-width: 1280px;
-    max-height: 74px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  margin: 0 auto;
+  max-width: 1280px;
+  max-height: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .header__container {
+    max-width: 768px;
   }
-  @media screen and (max-width: 768px){
-      .header__container {
-          max-width: 768px;
-        }
+}
+@media screen and (max-width: 390px) {
+  .header__container {
+    max-width: 320px;
   }
-  @media screen and (max-width: 390px){
-      .header__container {
-          max-width: 320px;
-        }
-  }
+}

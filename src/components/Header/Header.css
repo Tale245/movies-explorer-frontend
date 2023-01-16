@@ -1,6 +1,13 @@
 @import url(../../blocks/header/header.css);
 @import url(../../blocks/header/__container/header__container.css);
 @import url(../../blocks/header/__logo/header__logo.css);
-@import url(../../blocks/header/__container/__links/header__container_links.css);
+@import url(../../blocks/header/__container/_links/header__container_links.css);
 @import url(../../blocks/header/__link/header__link.css);
 @import url(../../blocks/header/__button/header__button.css);
+@import url(../../blocks/header/_white-theme/header_white-theme.css);
+@import url(../../blocks/header/__container/_links/_white-theme/header__contaniner_links_white-theme.css);
+@import url(../../blocks/header/__link/_white-theme/header__link_white-theme.css);
+@import url(../../blocks/header/__container/_profile/header__container_profile.css);
+@import url(../../blocks/header/__container/_logo/header__container_logo.css);
+@import url(../../blocks/header/__movies/header__movies.css);
+@import url(../../blocks/header/__btn-menu/header__btn-menu.css);

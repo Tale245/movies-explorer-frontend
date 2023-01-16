@@ -10,7 +10,7 @@ const SearchForm = () => {
           <input className="searchForm__input" placeholder="Фильм" />
           <button className="searchForm__submit-button">Найти</button>
         </div>
-          <FilterCheckbox />
+        <FilterCheckbox />
       </form>
     </>
   );

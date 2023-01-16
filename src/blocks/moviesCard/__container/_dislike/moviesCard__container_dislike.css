@@ -1,0 +1,6 @@
+.moviesCard__container_dislike {
+  opacity: 0;
+}
+.moviesCard__container_dislike:hover {
+  opacity: 1;
+}

@@ -1,0 +1,17 @@
+.moviesCard__delete-ico {
+  margin: 0;
+  width: 14px;
+  height: 12px;
+  border: none;
+  background: none;
+  outline: none;
+  background-image: url(../../../images/delete-eco.svg);
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  transition: opacity 70ms ease-in-out;
+}
+.moviesCard__delete-ico:hover {
+  opacity: 1;
+}

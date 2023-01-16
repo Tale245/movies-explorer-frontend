@@ -10,6 +10,3 @@
   background-size: contain;
   cursor: pointer;
 }
-.moviesCard__like-ico:hover{
-  background-image: url(../../../images/delete-eco.svg)
-}

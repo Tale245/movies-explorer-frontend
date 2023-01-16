@@ -5,14 +5,19 @@ import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const SavedMovies = () => {
+const SavedMovies = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups }) => {
   return (
     <>
-      <Header />
+      <Header
+        whiteTheme={true}
+        popupMenuOpen={popupMenuOpen}
+        isPopupMenuOpen={isPopupMenuOpen}
+        closeAllPopups={closeAllPopups}
+      />
       <section className="savedMovies">
         <div className="savedMovies__container">
           <SearchForm />
-          <MoviesCardList />
+          <MoviesCardList savedMovies={true} />
         </div>
       </section>
       <Footer />

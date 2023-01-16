@@ -15,7 +15,13 @@ const Register = () => {
           <input className="form__input" placeholder="Email" />
           <span className="form__span">Пароль</span>
           <input className="form__input" placeholder="Пароль" />
-          <SubmitLink titleBtn='Зарегистрироваться' titleText='Уже зарегистрированы?' link='/login' titleLink='Войти' login={false}/>
+          <SubmitLink
+            titleBtn="Зарегистрироваться"
+            titleText="Уже зарегистрированы?"
+            link="/login"
+            titleLink="Войти"
+            login={false}
+          />
         </form>
       </div>
     </section>
