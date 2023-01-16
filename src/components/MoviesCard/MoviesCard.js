@@ -12,14 +12,14 @@ const MoviesCard = ({ img, title, time, savedMovies }) => {
     <>
       <div className="moviesCard">
         <img className="moviesCard__image" src={img} alt="постер к фильму" />
-        <div className="moviesCard__container_description">
-          <div className="moviesCard__container_text">
+        <div className="moviesCard__container-description">
+          <div className="moviesCard__container-text">
             <h2 className="moviesCard__title">{title}</h2>
             <p className="moviesCard__paragraph">{time}</p>
           </div>
           <div
-            className={`moviesCard__container_like ${
-              savedMovies && "moviesCard__container_dislike"
+            className={`moviesCard__container-like ${
+              savedMovies && "moviesCard__container-dislike"
             }`}
           >
             {savedMovies === false && (

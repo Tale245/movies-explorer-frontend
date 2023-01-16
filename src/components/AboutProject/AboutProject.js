@@ -7,8 +7,8 @@ const AboutProject = () => {
     <section className="about-project">
       <div className="about-project__container">
         <NavTab title="О проекте" />
-        <div className="about-project__container_description">
-          <div className="about-project__container_text">
+        <div className="about-project__container-description">
+          <div className="about-project__container-text">
             <h2 className="about-project__text">
               Дипломный проект включал 5 этапов
             </h2>
@@ -17,7 +17,7 @@ const AboutProject = () => {
               функциональности и финальные доработки.
             </p>
           </div>
-          <div className="about-project__container_text">
+          <div className="about-project__container-text">
             <h2 className="about-project__text">
               На выполнение диплома ушло 5 недель
             </h2>
@@ -27,7 +27,7 @@ const AboutProject = () => {
             </p>
           </div>
         </div>
-        <div className="about-project__container_timeline">
+        <div className="about-project__container-timeline">
           <div className="about-project__time-element">
             <div className="about-project__element about-project__element_dark">
               <p className="about-project__time-text">1 неделя</p>

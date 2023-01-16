@@ -12,7 +12,7 @@ const Techs = () => {
           На курсе веб-разработки мы освоили технологии, которые применили в
           дипломном проекте.
         </p>
-        <div className="techs__container_icons">
+        <div className="techs__container-icons">
           <div className="techs__icon">
             <p className="techs__text">HTML</p>
           </div>

@@ -5,14 +5,14 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__container">
-        <div className="footer__container_paragraph">
+        <div className="footer__container-paragraph">
           <p className="footer__paragraph">
             Учебный проект Яндекс.Практикум х BeatFilm.
           </p>
         </div>
-        <div className="footer__container_text-communication">
+        <div className="footer__container-text-communication">
           <p className="footer__author">&copy; 2023</p>
-          <div className="footer__container_links">
+          <div className="footer__container-links">
             <a href="https://practicum.yandex.ru" className="footer__link">
               Яндекс.Практикум
             </a>

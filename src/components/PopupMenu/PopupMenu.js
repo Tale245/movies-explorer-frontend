@@ -33,14 +33,14 @@ const PopupMenu = ({ isPopupMenuOpen, closeAllPopups }) => {
         >
           Сохраненные фильмы
         </NavLink>
-        <div className="popup-menu__container_profile">
+        <div className="popup-menu__container-profile">
           <NavLink
             to="/profile"
             className="popup-menu__link popup-menu__link_profile"
           >
             Аккаунт
           </NavLink>
-          <div className="popup-menu__container_profile-element">
+          <div className="popup-menu__container-profile-element">
             <img
               className="popup-menu__profile-ico"
               src={profileIco}

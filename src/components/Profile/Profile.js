@@ -14,11 +14,11 @@ const Profile = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups }) => {
       <section className="profile">
         <div className="profile__container">
           <h1 className="profile__title">Привет, Виталий!</h1>
-          <div className="profile__container_input">
+          <div className="profile__container-input">
             <p className="profile__paragraph">Имя</p>
             <input className="profile__input" value="Виталий" disabled />
           </div>
-          <div className="profile__container_input">
+          <div className="profile__container-input">
             <p className="profile__paragraph">E-mail</p>
             <input
               className="profile__input"

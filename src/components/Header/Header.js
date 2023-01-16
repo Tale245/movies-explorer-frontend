@@ -14,7 +14,7 @@ const Header = ({
   return (
     <header className={`header ${whiteTheme && "header_white-theme"}`}>
       <div className="header__container">
-        <nav className="header__container_logo">
+        <nav className="header__container-logo">
           <Link to="/">
             <img className="header__logo" alt="логотип проекта" src={logo} />
           </Link>
@@ -40,8 +40,8 @@ const Header = ({
           )}
         </nav>
         <nav
-          className={`header__container_links ${
-            whiteTheme && "header__container_links_white-theme"
+          className={`header__container-links ${
+            whiteTheme && "header__container-links_white-theme"
           }`}
         >
           {!whiteTheme && (
@@ -62,7 +62,7 @@ const Header = ({
             </NavLink>
           )}
           {whiteTheme && (
-            <div className="header__container_profile">
+            <div className="header__container-profile">
               <img
                 className="header__profile-ico"
                 src={profileIco}

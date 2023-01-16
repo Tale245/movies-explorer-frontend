@@ -2,7 +2,7 @@
   margin: 0;
   background-image: url("../../../images/promo__logo.svg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   margin-top: 102px;
   margin-bottom: 60px;
   margin-right: 70px;
@@ -20,118 +20,21 @@
 }
 @media screen and (max-width: 700px) {
   .promo__logo {
-    width: 650px;
+    width: 100%;
   }
 }
-@media screen and (max-width: 660px) {
+
+@media screen and (max-width: 700px) {
   .promo__logo {
-    width: 600px;
-  }
-}
-@media screen and (max-width: 608px) {
-  .promo__logo {
-    width: 540px;
+    background-position: -70px;
+    height: 242px;
   }
 }
 @media screen and (max-width: 550px) {
   .promo__logo {
-    width: 500px;
     margin-top: 60px;
-  }
-}
-@media screen and (max-width: 520px) {
-  .promo__logo {
-    width: 470px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .promo__logo {
-    width: 470px;
-    background-size: cover;
-    background-position: -120px;
-  }
-}
-@media screen and (max-width: 470px) {
-  .promo__logo {
-    width: 460px;
-    background-position: -150px;
-  }
-}
-@media screen and (max-width: 460px) {
-  .promo__logo {
-    width: 450px;
-    background-position: -140px;
-  }
-}
-@media screen and (max-width: 450px) {
-  .promo__logo {
-    width: 440px;
-    background-position: -110px;
-  }
-}
-@media screen and (max-width: 440px) {
-  .promo__logo {
-    width: 430px;
-  }
-}
-@media screen and (max-width: 430px) {
-  .promo__logo {
-    width: 420px;
-  }
-}
-@media screen and (max-width: 420px) {
-  .promo__logo {
-    width: 410px;
-  }
-}
-@media screen and (max-width: 410px) {
-  .promo__logo {
-    width: 400px;
-  }
-}
-@media screen and (max-width: 400px) {
-  .promo__logo {
-    width: 390px;
+    height: 230px;
     margin-bottom: 40px;
-  }
-}
-@media screen and (max-width: 390px) {
-  .promo__logo {
-    width: 380px;
-  }
-}
-@media screen and (max-width: 380px) {
-  .promo__logo {
-    width: 370px;
-  }
-}
-@media screen and (max-width: 370px) {
-  .promo__logo {
-    width: 360px;
-  }
-}
-@media screen and (max-width: 360px) {
-  .promo__logo {
-    width: 350px;
-  }
-}
-@media screen and (max-width: 350px) {
-  .promo__logo {
-    width: 340px;
-  }
-}
-@media screen and (max-width: 340px) {
-  .promo__logo {
-    width: 330px;
-  }
-}
-@media screen and (max-width: 330px) {
-  .promo__logo {
-    width: 320px;
-  }
-}
-@media screen and (max-width: 320px) {
-  .promo__logo {
     background-position: -182px;
   }
 }

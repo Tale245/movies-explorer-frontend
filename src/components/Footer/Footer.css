@@ -1,8 +1,8 @@
 @import url(../../blocks/footer/footer.css);
 @import url(../../blocks/footer/__container/footer__container.css);
-@import url(../../blocks/footer/__container/_paragraph/footer__container_paragraph.css);
+@import url(../../blocks/footer/__container-paragraph/footer__container-paragraph.css);
 @import url(../../blocks/footer/__paragraph/footer_paragraph.css);
-@import url(../../blocks/footer/__container/_text-communication/footer__container_text-communication.css);
+@import url(../../blocks/footer/__container-text-communication/footer__container-text-communication.css);
 @import url(../../blocks/footer/__author/footer__author.css);
-@import url(../../blocks/footer/__container/_links/footer__container_links.css);
+@import url(../../blocks/footer/__container-links/footer__container-links.css);
 @import url(../../blocks/footer/__link/footer__link.css);

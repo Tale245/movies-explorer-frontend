@@ -5,7 +5,7 @@ const Portfolio = () => {
   return (
     <div className="portfolio">
       <h3 className="portfolio__title">Портфолио</h3>
-      <div className="porfolio__container_link">
+      <div className="porfolio__container-link">
         <a
           href="https://github.com/Tale245/how-to-learn"
           rel="noreferrer"
@@ -23,7 +23,7 @@ const Portfolio = () => {
           ↗
         </a>
       </div>
-      <div className="porfolio__container_link">
+      <div className="porfolio__container-link">
         <a
           href="https://github.com/Tale245/russian-travel"
           rel="noreferrer"
@@ -41,7 +41,7 @@ const Portfolio = () => {
           ↗
         </a>
       </div>
-      <div className="porfolio__container_link">
+      <div className="porfolio__container-link">
         <a
           href="https://github.com/Tale245/react-mesto-api-full"
           rel="noreferrer"

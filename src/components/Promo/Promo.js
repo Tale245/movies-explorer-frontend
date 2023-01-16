@@ -8,7 +8,7 @@ const Promo = () => {
         <h1 className="promo__title">
           Учебный проект студента факультета Веб-разработки.
         </h1>
-        <div className="promo__container_logo">
+        <div className="promo__container-logo">
           <div className="promo__logo"></div>
         </div>
       </div>

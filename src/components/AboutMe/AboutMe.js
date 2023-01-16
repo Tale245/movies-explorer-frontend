@@ -8,8 +8,8 @@ const AboutMe = () => {
     <section className="aboutMe">
       <div className="aboutMe__container">
         <NavTab title="Студент" />
-        <div className="aboutMe__container_info">
-          <div className="aboutMe__container_description">
+        <div className="aboutMe__container-info">
+          <div className="aboutMe__container-description">
             <h2 className="aboutMe__name">Ренат</h2>
             <h3 className="aboutMe__job">Фронтенд-разработчик 21 год</h3>
             <p className="aboutMe__description">

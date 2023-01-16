@@ -1,7 +1,7 @@
 @import url(../../blocks/profile/profile.css);
 @import url(../../blocks/profile/__container/profile__container.css);
 @import url(../../blocks/profile/__title/profile__title.css);
-@import url(../../blocks/profile/__container/_input/profile__container_input.css);
+@import url(../../blocks/profile/__container-input/profile__container-input.css);
 @import url(../../blocks/profile/__paragraph/profile__paragraph.css);
 @import url(../../blocks/profile/__input/profile__input.css);
 @import url(../../blocks/profile/__btn/profile__btn.css);
