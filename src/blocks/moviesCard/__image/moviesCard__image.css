@@ -1,12 +1,12 @@
 .moviesCard__image {
   margin: 0;
-  max-width: 364px;
-  max-height: 203px;
+  width: 364px;
+  height: 203px;
   object-fit: cover;
 }
 @media screen and (max-width: 768px) {
   .moviesCard__image {
-    max-width: 339px;
+    max-width: 340px;
     max-height: 190px;
   }
 }
