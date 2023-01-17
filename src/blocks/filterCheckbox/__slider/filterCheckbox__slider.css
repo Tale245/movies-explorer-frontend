@@ -1,0 +1,26 @@
+.filterCheckbox__slider {
+  margin: 0;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 20px;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+.filterCheckbox__slider::before {
+  content: "";
+  margin: 0;
+  position: absolute;
+  cursor: pointer;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background-color: #fff;
+  transition: 0.4s;
+}

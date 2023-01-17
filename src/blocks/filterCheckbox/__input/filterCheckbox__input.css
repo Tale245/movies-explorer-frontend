@@ -1,0 +1,12 @@
+.filterCheckbox__input {
+  margin: 0;
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+.filterCheckbox__input:checked + .filterCheckbox__slider {
+  background-color: #2be080;
+}
+.filterCheckbox__input:checked + .filterCheckbox__slider::before {
+  transform: translateX(16px);
+}

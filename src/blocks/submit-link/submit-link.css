@@ -1,0 +1,15 @@
+.submit-link {
+  margin: 0;
+  padding-top: 151px;
+  padding-bottom: 70px;
+}
+@media screen and (max-width: 950px) {
+  .submit-link {
+    padding-bottom: 232px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .submit-link {
+    padding-top: 240px;
+  }
+}

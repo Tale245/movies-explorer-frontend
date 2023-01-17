@@ -1,0 +1,12 @@
+.about-project__element {
+  margin: 0;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 320px) {
+  .about-project__element {
+    height: 35px;
+  }
+}

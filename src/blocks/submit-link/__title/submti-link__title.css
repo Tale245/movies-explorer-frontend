@@ -1,0 +1,16 @@
+.submit-link__title {
+  margin: 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #a0a0a0;
+}
+@media screen and (max-width: 550px) {
+  .submit-link__title {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

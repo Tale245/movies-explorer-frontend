@@ -1,0 +1,25 @@
+.searchForm__submit-button {
+  margin: 0;
+  width: 60px;
+  height: 34px;
+  background: #000;
+  border: none;
+  border-radius: 48px;
+  font-family: inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+}
+.searchForm__submit-button:hover{
+  cursor: pointer;
+}
+@media screen and (max-width: 620px) {
+  .searchForm__submit-button {
+    width: 69px;
+    font-size: 11px;
+    line-height: 18px;
+  }
+}
