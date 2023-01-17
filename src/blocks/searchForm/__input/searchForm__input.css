@@ -11,6 +11,9 @@
   background: none;
   outline: none;
 }
+.searchForm__input:focus{
+  color: black;
+}
 @media screen and (max-width: 620px) {
   .searchForm__input {
     font-size: 18px;
