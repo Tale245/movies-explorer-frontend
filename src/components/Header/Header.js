@@ -57,7 +57,7 @@ const Header = ({
           )}
 
           {whiteTheme && (
-            <NavLink to="/profile" className="header__link_white-theme">
+            <NavLink to="/profile" className="header__link header__link_white-theme">
               Аккаунт
             </NavLink>
           )}
