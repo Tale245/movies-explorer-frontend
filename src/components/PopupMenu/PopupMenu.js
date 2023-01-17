@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const PopupMenu = ({ isPopupMenuOpen, closeAllPopups }) => {
   return (
     <div className={`popup popup-menu ${isPopupMenuOpen && "popup_active"}`}>
-      <div className="popup-menu__overlay"></div>
+      <div className="popup-menu__overlay" onClick={closeAllPopups}></div>
       <div className="popup-menu__container">
         <button className="popup__close-btn" onClick={closeAllPopups}></button>
         <NavLink

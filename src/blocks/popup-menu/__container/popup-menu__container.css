@@ -1,6 +1,7 @@
 .popup-menu__container {
   margin: 0;
   width: 67.71%;
+  max-height: 1024px;
   padding-top: 159px;
   display: flex;
   flex-direction: column;
@@ -11,6 +12,7 @@
 }
 @media screen and (max-width: 550px) {
   .popup-menu__container {
+    max-height: 780px;
     padding-top: 144px;
     width: 100%;
     gap: 23px;
