@@ -1,12 +1,12 @@
 .popup-menu__container-profile {
   margin: 0;
-  padding-top: 592px;
+  padding-top: 586px;
   display: flex;
   align-items: center;
   gap: 19px;
 }
 @media screen and (max-width: 550px) {
   .popup-menu__container-profile {
-    padding-top: 444px;
+    padding-top: 416px;
   }
 }

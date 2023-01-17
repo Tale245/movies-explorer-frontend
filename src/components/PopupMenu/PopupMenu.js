@@ -36,7 +36,7 @@ const PopupMenu = ({ isPopupMenuOpen, closeAllPopups }) => {
         <div className="popup-menu__container-profile">
           <NavLink
             to="/profile"
-            className="popup-menu__link popup-menu__link_profile"
+            className="popup-menu__profile"
           >
             Аккаунт
           </NavLink>
