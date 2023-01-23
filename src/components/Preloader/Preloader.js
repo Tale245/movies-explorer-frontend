@@ -1,10 +1,12 @@
 import React from "react";
 import "./Preloader.css";
 
-const Preloader = () => {
+const Preloader = ({ showMoreItems }) => {
   return (
     <div className="preloader">
-      <button className="preloader__btn">Ещё</button>
+      <button className="preloader__btn" onClick={showMoreItems}>
+        Ещё
+      </button>
     </div>
   );
 };

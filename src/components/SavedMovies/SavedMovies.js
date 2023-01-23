@@ -5,7 +5,14 @@ import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const SavedMovies = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups }) => {
+const SavedMovies = ({
+  popupMenuOpen,
+  isPopupMenuOpen,
+  closeAllPopups,
+  savesMovies,
+  deleteMovie,
+  loggedIn
+}) => {
   return (
     <>
       <Header
@@ -13,11 +20,16 @@ const SavedMovies = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups }) => {
         popupMenuOpen={popupMenuOpen}
         isPopupMenuOpen={isPopupMenuOpen}
         closeAllPopups={closeAllPopups}
+        loggedIn={loggedIn}
       />
       <section className="savedMovies">
         <div className="savedMovies__container">
           <SearchForm />
-          <MoviesCardList savedMovies={true} />
+          <MoviesCardList
+            savedMovies={true}
+            movies={savesMovies}
+            deleteMovie={deleteMovie}
+          />
         </div>
       </section>
       <Footer />

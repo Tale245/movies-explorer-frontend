@@ -6,3 +6,5 @@
 @import url(../../blocks/profile/__input/profile__input.css);
 @import url(../../blocks/profile/__btn/profile__btn.css);
 @import url(../../blocks/profile/__btn/_logout/profile__btn_logout.css);
+@import url(../../blocks/profile/__input/_error/profile__input_error.css);
+@import url(../../blocks/profile/__btn/_disabled/profile__btn_disabled.css);

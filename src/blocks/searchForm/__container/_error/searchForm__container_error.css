@@ -1,0 +1,3 @@
+.searchForm__container:invalid{
+    border-bottom: #FF4062;
+}

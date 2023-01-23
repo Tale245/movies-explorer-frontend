@@ -6,10 +6,10 @@ import Techs from "../Techs/Techs";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const Main = () => {
+const Main = ({loggedIn}) => {
   return (
     <>
-      <Header whiteTheme={false} />
+      <Header whiteTheme={false} loggedIn={loggedIn}/>
       <Promo />
       <AboutProject />
       <Techs />

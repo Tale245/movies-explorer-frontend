@@ -8,7 +8,7 @@ const PageNotFound = () => {
       <div className="pageNotFound__container">
         <h1 className="pageNotFound__title">404</h1>
         <p className="pageNotFound__paragraph">Страница не найдена</p>
-        <Link to="/" className="pageNotFound__btn-back">
+        <Link to="/main-page" className="pageNotFound__btn-back">
           Назад
         </Link>
       </div>

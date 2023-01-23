@@ -1,0 +1,4 @@
+.submit-link__submit-btn_disabled{
+    background-color: rgb(75, 74, 74);
+    cursor: initial;
+}
