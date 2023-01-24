@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 import Preloader from "../Preloader/Preloader";
 
 const MoviesCardList = ({
-  savedMovies,
+  isSavedMovies,
   movies,
   saveMovie,
   deleteMovie,
   setUploadPageWithSavedMovie,
-  savesMovies,
+  savedMovies,
   foundMovies,
 }) => {
   const [visible, setVisible] = React.useState(12);
@@ -20,30 +20,32 @@ const MoviesCardList = ({
     });
   };
   
+  const whatMovies = isSavedMovies ? savedMovies : foundMovies.slice(0, visible)
+
   return (
     <section className="moviesCardList">
       <div className="moviesCardList__container">
-        {foundMovies.slice(0, visible).map((item) => (
+        {whatMovies.map((item) => (
           <MoviesCard
             country={item.country}
             description={item.description}
             director={item.director}
             duration={item.duration}
-            movieId={savedMovies ? item._id : item.id}
-            image={savedMovies ? item.image : item.image.url}
+            movieId={isSavedMovies ? item._id : item.id}
+            image={isSavedMovies ? item.image : item.image.url}
             nameEN={item.nameEN}
             nameRU={item.nameRU}
             trailerLink={item.trailerLink}
             year={item.year}
             thumbnail={
-              savedMovies ? item.thumbnail : item.image.formats.thumbnail.url
+              isSavedMovies ? item.thumbnail : item.image.formats.thumbnail.url
             }
-            key={savedMovies ? item._id : item.id}
-            savedMovies={savedMovies}
+            key={isSavedMovies ? item._id : item.id}
+            isSavedMovies={isSavedMovies}
             saveMovie={saveMovie}
             deleteMovie={deleteMovie}
             setUploadPageWithSavedMovie={setUploadPageWithSavedMovie}
-            savesMovies={savesMovies}
+            savedMovies={savedMovies}
             movies={movies}
           />
         ))}

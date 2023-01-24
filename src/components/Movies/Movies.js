@@ -13,7 +13,7 @@ const Movies = ({
   saveMovie,
   setUploadPageWithSavedMovie,
   deleteMovie,
-  savesMovies,
+  savedMovies,
   loggedIn,
 }) => {
   const [inputValue, setInputValue] = useState("");
@@ -35,8 +35,7 @@ const Movies = ({
       }
     });
   };
-
-  console.log(foundMovies);
+  
   return (
     <>
       <Header
@@ -56,8 +55,8 @@ const Movies = ({
             value={value}
           />
           <MoviesCardList
-            savesMovies={savesMovies}
-            savedMovies={false}
+            savedMovies={savedMovies}
+            isSavedMovies={false}
             movies={movies}
             saveMovie={saveMovie}
             setUploadPageWithSavedMovie={setUploadPageWithSavedMovie}

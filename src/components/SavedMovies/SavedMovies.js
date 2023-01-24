@@ -9,7 +9,7 @@ const SavedMovies = ({
   popupMenuOpen,
   isPopupMenuOpen,
   closeAllPopups,
-  savesMovies,
+  savedMovies,
   deleteMovie,
   loggedIn
 }) => {
@@ -26,8 +26,8 @@ const SavedMovies = ({
         <div className="savedMovies__container">
           <SearchForm />
           <MoviesCardList
-            savedMovies={true}
-            movies={savesMovies}
+            isSavedMovies={true}
+            savedMovies={savedMovies}
             deleteMovie={deleteMovie}
           />
         </div>

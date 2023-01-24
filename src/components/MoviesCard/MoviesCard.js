@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./MoviesCard.css";
 
 const MoviesCard = ({
@@ -13,40 +13,15 @@ const MoviesCard = ({
   trailerLink,
   year,
   thumbnail,
-  savedMovies,
+  isSavedMovies,
   saveMovie,
   deleteMovie,
   setUploadPageWithSavedMovie,
-  savesMovies,
+  savedMovies,
   movies,
 }) => {
   const [isClicked, setIsClicked] = React.useState(false);
-  const handleLikeClick = () => {
-    if (!isClicked) {
-      saveMovie(
-        country,
-        director,
-        duration,
-        year,
-        description,
-        image,
-        trailerLink,
-        thumbnail,
-        movieId,
-        nameRU,
-        nameEN
-      );
-      setUploadPageWithSavedMovie(true);
-    } else {
-      savesMovies.forEach((item) => {
-        if (movieId === item.movieId) {
-          deleteMovie(item._id);
-        }
-      });
-      setUploadPageWithSavedMovie(true);
-    }
-    setIsClicked(!isClicked);
-  };
+  const [isarr, setIsarr] = React.useState([]);
 
   function getTimeFromMins(duration) {
     let hours = Math.trunc(duration / 60);
@@ -56,16 +31,39 @@ const MoviesCard = ({
 
   const adjustedTime = getTimeFromMins(duration);
 
+  const handleClick = () => {
+    if (!isClicked) {
+      saveMovie( country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN);
+      setUploadPageWithSavedMovie(true);
+    } else {
+      savedMovies.forEach((item) => {
+        if (movieId === item.movieId) {
+          deleteMovie(item._id);
+       }
+    })
+  };
+
+  return setIsClicked(!isClicked)
+}
+
   const deleteSavedMovie = () => {
     deleteMovie(movieId);
   };
+
+  useEffect(() => {
+    savedMovies.filter((item) => {
+          if(movieId === item.movieId){
+            setIsClicked(true)
+          }
+    })
+  }, [])
 
   return (
     <>
       <div className="moviesCard">
         <img
           className="moviesCard__image"
-          src={savedMovies ? image : `https://api.nomoreparties.co/${image}`}
+          src={isSavedMovies ? image : `https://api.nomoreparties.co/${image}`}
           alt="постер к фильму"
         />
         <div className="moviesCard__container-description">
@@ -75,18 +73,16 @@ const MoviesCard = ({
           </div>
           <div
             className={`moviesCard__container-like ${
-              savedMovies && "moviesCard__container-dislike"
+              isSavedMovies && "moviesCard__container-dislike"
             }`}
           >
-            {savedMovies === false && (
+            { isSavedMovies === false && (
               <button
-                className={`moviesCard__like-ico ${
-                  isClicked && "moviesCard__like-ico_active"
-                }`}
-                onClick={handleLikeClick}
+                className={`moviesCard__like-ico ${isClicked && "moviesCard__like-ico_active"}`}
+                onClick={handleClick}
               ></button>
             )}
-            {savedMovies && (
+            { isSavedMovies && (
               <button
                 className={`moviesCard__delete-ico`}
                 onClick={deleteSavedMovie}
@@ -127,4 +123,31 @@ export default MoviesCard;
 // setIsLiked(false);
 // setUploadPageWithSavedMovie(true);
 //   }
+// };
+
+// const handleLikeClick = () => {
+//   if (!isClicked) {
+// saveMovie(
+//   country,
+//   director,
+//   duration,
+//   year,
+//   description,
+//   image,
+//   trailerLink,
+//   thumbnail,
+//   movieId,
+//   nameRU,
+//   nameEN
+// );
+// setUploadPageWithSavedMovie(true);
+//   } else {
+//     savesMovies.forEach((item) => {
+//       if (movieId === item.movieId) {
+//         deleteMovie(item._id);
+//       }
+//     });
+//     setUploadPageWithSavedMovie(true);
+//   }
+//   setIsClicked(!isClicked);
 // };

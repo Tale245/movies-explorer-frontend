@@ -10,16 +10,14 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-
 function App() {
   const [isPopupMenuOpen, setIsPopupMenuOpen] = React.useState(false);
   const [movies, setMovies] = React.useState([]);
-  const [savesMovies, setSavesMovies] = React.useState([]);
+  const [savedMovies, setSavedMovies] = React.useState([]);
   const [uploadPageWithSavedMovie, setUploadPageWithSavedMovie] =
     React.useState(false);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState({});
-
   React.useEffect(() => {
     if (loggedIn) {
       moviesApi.getMovies().then((res) => {
@@ -42,7 +40,7 @@ function App() {
       mainApi.getSavedMovie().then((res) => {
         setUploadPageWithSavedMovie(false);
         localStorage.setItem("savedMovies", JSON.stringify(res));
-        setSavesMovies(res);
+        setSavedMovies(res);
       });
     }
   }, [uploadPageWithSavedMovie]);
@@ -131,8 +129,8 @@ function App() {
               closeAllPopups={closeAllPopups}
               setUploadPageWithSavedMovie={setUploadPageWithSavedMovie}
               deleteMovie={deleteMovie}
-              savesMovies={savesMovies}
-              loggedIn={loggedIn}
+              savedMovies={savedMovies}
+      d      loggedIn={loggedIn}
               element={Movies}
             />
           }
@@ -147,8 +145,8 @@ function App() {
               popupMenuOpen={popupMenuOpen}
               isPopupMenuOpen={isPopupMenuOpen}
               closeAllPopups={closeAllPopups}
-              savesMovies={savesMovies}
-              deleteMovie={deleteMovie}
+              savedMovies={savedMovies}
+      d      deleteMovie={deleteMovie}
             />
           }
         />
