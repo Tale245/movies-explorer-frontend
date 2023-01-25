@@ -17,15 +17,48 @@ const Movies = ({
   loggedIn,
   usePreloader,
   setUsePreloader,
-  handleInputValue,
-  searchMovie,
   foundMovies,
-  value,
-  setValue,
   notFoundMovies,
   foundSavedMovies,
   moviesError,
+  setFoundMovies,
+  setFoundSavedMovies,
+  setNotFoundMovies,
 }) => {
+  const [value, setValue] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState(localStorage.getItem('inputValueMovie'));
+
+  let moviesName = [];
+
+  // Поиск по фильмам
+  const searchMovie = (e) => {
+    e.preventDefault();
+    if (!moviesError) {
+      setUsePreloader(true);
+      movies.filter((item) => {
+        if (
+          value
+            ? item.nameRU.includes(inputValue) && item.duration <= 40
+            : item.nameRU.includes(inputValue)
+        ) {
+          moviesName.push(item);
+          setFoundMovies(moviesName);
+        }
+      });
+      if (moviesName.length === 0) {
+        setNotFoundMovies(true);
+      } else {
+        setNotFoundMovies(false);
+      }
+      setUsePreloader(false);
+    }
+  };
+
+  const handleInputValue = (e) => {
+    setInputValue(e.target.value);
+    localStorage.setItem('inputValueMovie', e.target.value)
+    console.log(inputValue);
+  };
 
   return (
     <>
@@ -46,6 +79,7 @@ const Movies = ({
             setUsePreloader={setUsePreloader}
             moviesError={moviesError}
             isSavedMovies={false}
+            inputValue={inputValue}
           />
           <MoviesCardList
             savedMovies={savedMovies}

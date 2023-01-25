@@ -20,10 +20,8 @@ function App() {
   const [userInfo, setUserInfo] = React.useState({});
   const [usePreloader, setUsePreloader] = React.useState(false);
 
-  const [inputValue, setInputValue] = React.useState("");
   const [foundMovies, setFoundMovies] = React.useState([]);
   const [foundSavedMovies, setFoundSavedMovies] = React.useState([]);
-  const [value, setValue] = React.useState(false);
   const [notFoundMovies, setNotFoundMovies] = React.useState(false);
   const [moviesError, setMoviesError] = React.useState(false);
 
@@ -32,7 +30,7 @@ function App() {
       moviesApi
         .getMovies()
         .then((res) => {
-          setUploadPageWithSavedMovie(true)
+          setUploadPageWithSavedMovie(true);
           localStorage.setItem("movies", JSON.stringify(res));
           setMovies(res);
         })
@@ -57,52 +55,49 @@ function App() {
         .then((res) => {
           setUploadPageWithSavedMovie(false);
           localStorage.setItem("savedMovies", JSON.stringify(res));
+          setFoundSavedMovies(JSON.parse(localStorage.getItem('savedFoundMovies')))
           setSavedMovies(res);
         })
         .catch(() => {
           setMoviesError(true);
         });
     }
-    console.log(savedMovies)
+    console.log(savedMovies);
+
   }, [uploadPageWithSavedMovie]);
 
-  const handleInputValue = (e) => {
-    setInputValue(e.target.value);
-    console.log(inputValue);
-  };
+  // let moviesName = [];
 
-  let moviesName = [];
-
-  // Поиск по фильмам
-  const searchMovie = (e, isSavedMovies) => {
-    e.preventDefault();
-    if (!moviesError) {
-      setUsePreloader(true);
-      const whatMovies = isSavedMovies
-        ? savedMovies
-        : movies;
-      whatMovies.filter((item) => {
-        if (
-          value
-            ? item.nameRU.includes(inputValue) && item.duration <= 40
-            : item.nameRU.includes(inputValue)
-        ) {
-          moviesName.push(item);
-          if(isSavedMovies){
-            setFoundSavedMovies(moviesName)
-          } else{
-            setFoundMovies(moviesName);
-          }
-        }
-      });
-      if (moviesName.length === 0) {
-        setNotFoundMovies(true);
-      } else {
-        setNotFoundMovies(false);
-      }
-      setUsePreloader(false);
-    }
-  };
+  // // Поиск по фильмам
+  // const searchMovie = (e, isSavedMovies) => {
+  //   e.preventDefault();
+  //   if (!moviesError) {
+  //     setUsePreloader(true);
+  //     const whatMovies = isSavedMovies
+  //       ? savedMovies
+  //       : movies;
+  //     whatMovies.filter((item) => {
+  //       if (
+  //         value
+  //           ? item.nameRU.includes(inputValue) && item.duration <= 40
+  //           : item.nameRU.includes(inputValue)
+  //       ) {
+  //         moviesName.push(item);
+  //         if(isSavedMovies){
+  //           setFoundSavedMovies(moviesName)
+  //         } else{
+  //           setFoundMovies(moviesName);
+  //         }
+  //       }
+  //     });
+  //     if (moviesName.length === 0) {
+  //       setNotFoundMovies(true);
+  //     } else {
+  //       setNotFoundMovies(false);
+  //     }
+  //     setUsePreloader(false);
+  //   }
+  // };
   const navigate = useNavigate();
 
   const tokenCheck = (token) => {
@@ -171,7 +166,6 @@ function App() {
       nameEN
     );
   };
-
   return (
     <div>
       <Routes>
@@ -192,15 +186,13 @@ function App() {
               element={Movies}
               usePreloader={usePreloader}
               setUsePreloader={setUsePreloader}
-              handleInputValue={handleInputValue}
-              inputValue={inputValue}
               foundMovies={foundMovies}
-              searchMovie={searchMovie}
-              value={value}
-              setValue={setValue}
               notFoundMovies={notFoundMovies}
               moviesError={moviesError}
               foundSavedMovies={foundSavedMovies}
+              setFoundMovies={setFoundMovies}
+              setFoundSavedMovies={setFoundSavedMovies}
+              setNotFoundMovies={setNotFoundMovies}
             />
           }
         />
@@ -218,13 +210,13 @@ function App() {
               deleteMovie={deleteMovie}
               usePreloader={usePreloader}
               setUsePreloader={setUsePreloader}
-              handleInputValue={handleInputValue}
-              searchMovie={searchMovie}
               foundMovies={foundMovies}
               notFoundMovies={notFoundMovies}
               foundSavedMovies={foundSavedMovies}
-              value={value}
-              setValue={setValue}
+              moviesError={moviesError}
+              setFoundMovies={setFoundMovies}
+              setFoundSavedMovies={setFoundSavedMovies}
+              setNotFoundMovies={setNotFoundMovies}
             />
           }
         />

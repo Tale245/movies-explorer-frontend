@@ -39,6 +39,7 @@ const MoviesCard = ({
       savedMovies.forEach((item) => {
         if (movieId === item.movieId) {
           deleteMovie(item._id);
+          setUploadPageWithSavedMovie(true);
        }
     })
   };
@@ -48,6 +49,7 @@ const MoviesCard = ({
 
   const deleteSavedMovie = () => {
     deleteMovie(movieId);
+    setUploadPageWithSavedMovie(true);
   };
 
   useEffect(() => {
