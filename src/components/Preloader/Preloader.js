@@ -1,14 +1,12 @@
 import React from "react";
-import "./Preloader.css";
+import './Preloader.css'
 
-const Preloader = ({ showMoreItems }) => {
-  return (
-    <div className="preloader">
-      <button className="preloader__btn" onClick={showMoreItems}>
-        Ещё
-      </button>
-    </div>
-  );
-};
+const Preloader = () => {
+    return(
+        <div className="preloader__container">
+        <p className="preloader">Загрузка...</p>
+        </div>
+    )
+}
 
-export default Preloader;
+export default Preloader

@@ -3,7 +3,7 @@ import "./FilterCheckbox.css";
 
 const FilterCheckbox = ({setValue, value}) => {
   
-  const result = (e) => {
+  const result = () => {
     setValue(!value)
   }
 

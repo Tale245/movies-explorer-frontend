@@ -18,12 +18,27 @@ function App() {
     React.useState(false);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState({});
+  const [usePreloader, setUsePreloader] = React.useState(false);
+
+  const [inputValue, setInputValue] = React.useState("");
+  const [foundMovies, setFoundMovies] = React.useState([]);
+  const [foundSavedMovies, setFoundSavedMovies] = React.useState([]);
+  const [value, setValue] = React.useState(false);
+  const [notFoundMovies, setNotFoundMovies] = React.useState(false);
+  const [moviesError, setMoviesError] = React.useState(false);
+
   React.useEffect(() => {
     if (loggedIn) {
-      moviesApi.getMovies().then((res) => {
-        localStorage.setItem("movies", JSON.stringify(res));
-        setMovies(res);
-      });
+      moviesApi
+        .getMovies()
+        .then((res) => {
+          setUploadPageWithSavedMovie(true)
+          localStorage.setItem("movies", JSON.stringify(res));
+          setMovies(res);
+        })
+        .catch(() => {
+          setMoviesError(true);
+        });
 
       mainApi.getUserInfo().then((res) => {
         const userData = {
@@ -37,14 +52,57 @@ function App() {
 
   React.useEffect(() => {
     if (loggedIn) {
-      mainApi.getSavedMovie().then((res) => {
-        setUploadPageWithSavedMovie(false);
-        localStorage.setItem("savedMovies", JSON.stringify(res));
-        setSavedMovies(res);
-      });
+      mainApi
+        .getSavedMovie()
+        .then((res) => {
+          setUploadPageWithSavedMovie(false);
+          localStorage.setItem("savedMovies", JSON.stringify(res));
+          setSavedMovies(res);
+        })
+        .catch(() => {
+          setMoviesError(true);
+        });
     }
+    console.log(savedMovies)
   }, [uploadPageWithSavedMovie]);
 
+  const handleInputValue = (e) => {
+    setInputValue(e.target.value);
+    console.log(inputValue);
+  };
+
+  let moviesName = [];
+
+  // Поиск по фильмам
+  const searchMovie = (e, isSavedMovies) => {
+    e.preventDefault();
+    if (!moviesError) {
+      setUsePreloader(true);
+      const whatMovies = isSavedMovies
+        ? savedMovies
+        : movies;
+      whatMovies.filter((item) => {
+        if (
+          value
+            ? item.nameRU.includes(inputValue) && item.duration <= 40
+            : item.nameRU.includes(inputValue)
+        ) {
+          moviesName.push(item);
+          if(isSavedMovies){
+            setFoundSavedMovies(moviesName)
+          } else{
+            setFoundMovies(moviesName);
+          }
+        }
+      });
+      if (moviesName.length === 0) {
+        setNotFoundMovies(true);
+      } else {
+        setNotFoundMovies(false);
+      }
+      setUsePreloader(false);
+    }
+  };
   const navigate = useNavigate();
 
   const tokenCheck = (token) => {
@@ -130,8 +188,19 @@ function App() {
               setUploadPageWithSavedMovie={setUploadPageWithSavedMovie}
               deleteMovie={deleteMovie}
               savedMovies={savedMovies}
-      d      loggedIn={loggedIn}
+              loggedIn={loggedIn}
               element={Movies}
+              usePreloader={usePreloader}
+              setUsePreloader={setUsePreloader}
+              handleInputValue={handleInputValue}
+              inputValue={inputValue}
+              foundMovies={foundMovies}
+              searchMovie={searchMovie}
+              value={value}
+              setValue={setValue}
+              notFoundMovies={notFoundMovies}
+              moviesError={moviesError}
+              foundSavedMovies={foundSavedMovies}
             />
           }
         />
@@ -146,7 +215,16 @@ function App() {
               isPopupMenuOpen={isPopupMenuOpen}
               closeAllPopups={closeAllPopups}
               savedMovies={savedMovies}
-      d      deleteMovie={deleteMovie}
+              deleteMovie={deleteMovie}
+              usePreloader={usePreloader}
+              setUsePreloader={setUsePreloader}
+              handleInputValue={handleInputValue}
+              searchMovie={searchMovie}
+              foundMovies={foundMovies}
+              notFoundMovies={notFoundMovies}
+              foundSavedMovies={foundSavedMovies}
+              value={value}
+              setValue={setValue}
             />
           }
         />

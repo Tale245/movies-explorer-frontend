@@ -11,7 +11,13 @@ const SavedMovies = ({
   closeAllPopups,
   savedMovies,
   deleteMovie,
-  loggedIn
+  loggedIn,
+  handleInputValue,
+  searchMovie,
+  notFoundMovies,
+  foundSavedMovies,
+  value,
+  setValue
 }) => {
   return (
     <>
@@ -24,11 +30,19 @@ const SavedMovies = ({
       />
       <section className="savedMovies">
         <div className="savedMovies__container">
-          <SearchForm />
+          <SearchForm
+            handleInputValue={handleInputValue}
+            isSavedMovies={true}
+            searchMovie={searchMovie}
+            notFoundMovies={notFoundMovies}
+            value={value}
+            setValue={setValue}
+          />
           <MoviesCardList
             isSavedMovies={true}
             savedMovies={savedMovies}
             deleteMovie={deleteMovie}
+            foundSavedMovies={foundSavedMovies}
           />
         </div>
       </section>

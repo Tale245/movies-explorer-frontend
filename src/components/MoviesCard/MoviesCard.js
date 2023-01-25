@@ -21,7 +21,7 @@ const MoviesCard = ({
   movies,
 }) => {
   const [isClicked, setIsClicked] = React.useState(false);
-  const [isarr, setIsarr] = React.useState([]);
+
 
   function getTimeFromMins(duration) {
     let hours = Math.trunc(duration / 60);

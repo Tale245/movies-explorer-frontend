@@ -1,2 +1,15 @@
-@import url(../../blocks/preloader/preloader.css);
-@import url(../../blocks/preloader/__btn/preloader__btn.css);
+.preloader {
+  margin: 0 auto;
+  font-family: "Inter", Arial, Helvetica, sans-serif4;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+}
+.preloader__container{
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

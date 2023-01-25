@@ -15,27 +15,18 @@ const Movies = ({
   deleteMovie,
   savedMovies,
   loggedIn,
+  usePreloader,
+  setUsePreloader,
+  handleInputValue,
+  searchMovie,
+  foundMovies,
+  value,
+  setValue,
+  notFoundMovies,
+  foundSavedMovies,
+  moviesError,
 }) => {
-  const [inputValue, setInputValue] = useState("");
-  const [foundMovies, setFoundMovies] = useState([]);
-  const [value, setValue] = useState(false);
 
-  const handleInputValue = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  let moviesName = [];
-
-  const searchMovie = (e) => {
-    e.preventDefault();
-    movies.filter((item) => {
-      if (item.nameRU.includes(inputValue)) {
-        moviesName.push(item);
-        setFoundMovies(moviesName);
-      }
-    });
-  };
-  
   return (
     <>
       <Header
@@ -48,11 +39,13 @@ const Movies = ({
       <section className="movies">
         <div className="movies__container">
           <SearchForm
-            movies={movies}
             handleInputValue={handleInputValue}
             searchMovie={searchMovie}
             setValue={setValue}
             value={value}
+            setUsePreloader={setUsePreloader}
+            moviesError={moviesError}
+            isSavedMovies={false}
           />
           <MoviesCardList
             savedMovies={savedMovies}
@@ -62,6 +55,11 @@ const Movies = ({
             setUploadPageWithSavedMovie={setUploadPageWithSavedMovie}
             deleteMovie={deleteMovie}
             foundMovies={foundMovies}
+            usePreloader={usePreloader}
+            setUsePreloader={setUsePreloader}
+            notFoundMovies={notFoundMovies}
+            moviesError={moviesError}
+            foundSavedMovies={foundSavedMovies}
           />
         </div>
       </section>
