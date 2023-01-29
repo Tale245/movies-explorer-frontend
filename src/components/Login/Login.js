@@ -16,7 +16,7 @@ const Login = () => {
           <SubmitLink
             titleBtn="Войти"
             titleText="Ещё не зарегистрированы?"
-            link="/register"
+            link="/signup"
             titleLink="Регистрация"
             login={true}
           />

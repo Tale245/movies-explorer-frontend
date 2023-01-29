@@ -1,37 +1,94 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MoviesCard.css";
 
-const MoviesCard = ({ img, title, time, savedMovies }) => {
-  const [isLiked, setIsLiked] = React.useState(false);
+const MoviesCard = ({
+  country,
+  director,
+  duration,
+  year,
+  description,
+  image,
+  trailerLink,
+  nameRU,
+  nameEN,
+  thumbnail,
+  movieId,
 
-  const handleLikeCard = () => {
-    setIsLiked(true);
+  saveMovie,
+  isSavedMovies,
+  deleteSavedMovies,
+  savedMovies,
+}) => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  useEffect(() => {
+    savedMovies.filter((item) => {
+      if (movieId === item.movieId) {
+        setIsClicked(true)
+      }
+    });
+  }, []);
+
+  const handleCardClick = () => {
+    if (!isClicked) {
+      saveMovie(
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        nameRU,
+        nameEN,
+        thumbnail,
+        movieId
+      );
+    } else {
+      savedMovies.filter((item) => {
+        if (movieId === item.movieId) {
+          deleteSavedMovies(item._id);
+        }
+      });
+    }
+    setIsClicked(!isClicked);
+  };
+
+  const handleCardDelete = () => {
+    deleteSavedMovies(movieId);
   };
 
   return (
     <>
       <div className="moviesCard">
-        <img className="moviesCard__image" src={img} alt="постер к фильму" />
+        <img
+          className="moviesCard__image"
+          src={isSavedMovies ? image : `https://api.nomoreparties.co${image}`}
+          alt="постер к фильму"
+        />
         <div className="moviesCard__container-description">
           <div className="moviesCard__container-text">
-            <h2 className="moviesCard__title">{title}</h2>
-            <p className="moviesCard__paragraph">{time}</p>
+            <h2 className="moviesCard__title">{nameRU}</h2>
+            <p className="moviesCard__paragraph">{duration}</p>
           </div>
           <div
             className={`moviesCard__container-like ${
-              savedMovies && "moviesCard__container-dislike"
+              isSavedMovies && "moviesCard__container-dislike"
             }`}
           >
-            {savedMovies === false && (
+            {isSavedMovies === false && (
               <button
                 className={`moviesCard__like-ico ${
-                  isLiked && "moviesCard__like-ico_active"
+                  isClicked && "moviesCard__like-ico_active"
                 }`}
-                onClick={handleLikeCard}
+                onClick={handleCardClick}
               ></button>
             )}
-            {savedMovies && (
-              <button className={`moviesCard__delete-ico`}></button>
+            {isSavedMovies && (
+              <button
+                className={`moviesCard__delete-ico`}
+                onClick={handleCardDelete}
+              ></button>
             )}
           </div>
         </div>

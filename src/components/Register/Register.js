@@ -18,7 +18,7 @@ const Register = () => {
           <SubmitLink
             titleBtn="Зарегистрироваться"
             titleText="Уже зарегистрированы?"
-            link="/login"
+            link="/signin"
             titleLink="Войти"
             login={false}
           />

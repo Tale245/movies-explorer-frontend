@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SavedMovies.css";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const SavedMovies = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups }) => {
+const SavedMovies = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups, deleteSavedMovies, savedMovies }) => {
   return (
     <>
       <Header
@@ -17,7 +17,7 @@ const SavedMovies = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups }) => {
       <section className="savedMovies">
         <div className="savedMovies__container">
           <SearchForm />
-          <MoviesCardList savedMovies={true} />
+          <MoviesCardList isSavedMovies={true} savedMovies={savedMovies} deleteSavedMovies={deleteSavedMovies}/>
         </div>
       </section>
       <Footer />
