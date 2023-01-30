@@ -12,6 +12,7 @@ const Movies = ({
   saveMovie,
   deleteSavedMovies,
   savedMovies,
+  loggedIn
 }) => {
   const [beatfilmMovies, setbeatfilmMovies] = useState(
     JSON.parse(localStorage.getItem("BeatfilmMovies"))
@@ -20,7 +21,7 @@ const Movies = ({
   return (
     <>
       <Header
-        whiteTheme={true}
+        loggedIn={loggedIn}
         popupMenuOpen={popupMenuOpen}
         isPopupMenuOpen={isPopupMenuOpen}
         closeAllPopups={closeAllPopups}

@@ -6,19 +6,19 @@ import { NavLink, Link } from "react-router-dom";
 import PopupMenu from "../PopupMenu/PopupMenu";
 
 const Header = ({
-  whiteTheme,
+  loggedIn,
   popupMenuOpen,
   isPopupMenuOpen,
   closeAllPopups,
 }) => {
   return (
-    <header className={`header ${whiteTheme && "header_white-theme"}`}>
+    <header className={`header ${loggedIn && "header_white-theme"}`}>
       <div className="header__container">
         <nav className="header__container-logo">
           <Link to="/">
             <img className="header__logo" alt="логотип проекта" src={logo} />
           </Link>
-          {whiteTheme && (
+          {loggedIn && (
             <NavLink
               to="/movies"
               className={({ isActive }) =>
@@ -28,7 +28,7 @@ const Header = ({
               Фильмы
             </NavLink>
           )}
-          {whiteTheme && (
+          {loggedIn && (
             <NavLink
               to="/saved-movies"
               className={({ isActive }) =>
@@ -41,27 +41,27 @@ const Header = ({
         </nav>
         <nav
           className={`header__container-links ${
-            whiteTheme && "header__container-links_white-theme"
+            loggedIn && "header__container-links_white-theme"
           }`}
         >
-          {!whiteTheme && (
+          {!loggedIn && (
             <NavLink to="/signup" href="#" className="header__link">
               {" "}
               Регистрация{" "}
             </NavLink>
           )}
-          {!whiteTheme && (
+          {!loggedIn && (
             <NavLink to="/signin">
               <button className="header__button">Войти </button>
             </NavLink>
           )}
 
-          {whiteTheme && (
+          {loggedIn && (
             <NavLink to="/profile" className="header__link header__link_white-theme">
               Аккаунт
             </NavLink>
           )}
-          {whiteTheme && (
+          {loggedIn && (
             <div className="header__container-profile">
               <img
                 className="header__profile-ico"
@@ -70,7 +70,7 @@ const Header = ({
               />
             </div>
           )}
-          {whiteTheme && (
+          {loggedIn && (
             <button
               className="header__btn-menu"
               alt="иконка профиль"

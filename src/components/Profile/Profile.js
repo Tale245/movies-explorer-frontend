@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../Header/Header";
 import "./Profile.css";
 
-const Profile = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups }) => {
+const Profile = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups, loggedIn }) => {
   return (
     <>
       <Header
@@ -10,6 +10,7 @@ const Profile = ({ popupMenuOpen, isPopupMenuOpen, closeAllPopups }) => {
         popupMenuOpen={popupMenuOpen}
         isPopupMenuOpen={isPopupMenuOpen}
         closeAllPopups={closeAllPopups}
+        loggedIn={loggedIn}
       />
       <section className="profile">
         <div className="profile__container">

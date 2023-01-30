@@ -1,6 +1,7 @@
 @import url(../../blocks/submit-link/submit-link.css);
 @import url(../../blocks/submit-link/__login/submit-link__login.css);
 @import url(../../blocks/submit-link/__submit-btn/submit-link__submit-btn.css);
+@import url(../../blocks/submit-link/__submit-btn/_disabled/submit-link__submit-btn_disabled.css);
 @import url(../../blocks/submit-link/__container-link/submit-link__container-link.css);
 @import url(../../blocks/submit-link/__title/submti-link__title.css);
 @import url(../../blocks/submit-link/__link/submit-link__link.css);

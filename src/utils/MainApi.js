@@ -1,8 +1,6 @@
 class MainApi {
   constructor() {
     this._baseUrl = "http://localhost:3001";
-    this._tempToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2Q1MWU5YjA2ZGEyMDE5MTg3MzI2ODgiLCJpYXQiOjE2NzQ5MTEzOTYsImV4cCI6MTY3NTUxNjE5Nn0.zIETJYhlfDuJCqCbdb3OOb5H9TfdlxPoLtcBvNyHJdU";
   }
 
   _checkResponse(res) {
@@ -17,7 +15,7 @@ class MainApi {
     return fetch(`${this._baseUrl}/movies`, {
       method: "GET",
       headers: {
-        authorization: `Bearer ${this._tempToken}`,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         "Content-Type": "application/json",
       },
     }).then((res) => {
@@ -41,7 +39,7 @@ class MainApi {
     return fetch(`${this._baseUrl}/movies`, {
       method: "POST",
       headers: {
-        authorization: `Bearer ${this._tempToken}`,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -66,7 +64,7 @@ class MainApi {
     return fetch(`${this._baseUrl}/movies/${id}`, {
       method: "DELETE",
       headers: {
-        authorization: `Bearer ${this._tempToken}`,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
