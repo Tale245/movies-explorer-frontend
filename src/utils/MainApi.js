@@ -7,7 +7,7 @@ class MainApi {
     if (res.ok) {
       return res.json();
     } else {
-      return Promise.reject(`Ошибка MainApi ${res.status}`);
+      return Promise.reject(`Ошибка в MainApi: ${res.status}`);
     }
   }
 
@@ -15,7 +15,7 @@ class MainApi {
     return fetch(`${this._baseUrl}/movies`, {
       method: "GET",
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
     }).then((res) => {
@@ -39,7 +39,7 @@ class MainApi {
     return fetch(`${this._baseUrl}/movies`, {
       method: "POST",
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -64,12 +64,40 @@ class MainApi {
     return fetch(`${this._baseUrl}/movies/${id}`, {
       method: "DELETE",
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         id: id,
       }),
+    });
+  }
+
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      return this._checkResponse(res);
+    });
+  }
+
+  updateUserInfo(name, email) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+      }),
+    }).then((res) => {
+      return this._checkResponse(res);
     });
   }
 }

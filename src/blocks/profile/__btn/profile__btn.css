@@ -10,23 +10,23 @@
   color: #000000;
   cursor: pointer;
 }
+.profile__btn {
+  margin-top: 205px;
+  margin-bottom: 13px;
+}
 @media screen and (max-width: 550px) {
   .profile__btn {
     font-size: 12px;
     line-height: 15px;
   }
 }
-.profile__btn:first-of-type {
-  margin-top: 205px;
-  margin-bottom: 13px;
-}
 @media screen and (max-width: 920px) {
-  .profile__btn:first-of-type {
+  .profile__btn {
     margin-top: 195px;
   }
 }
 @media screen and (max-width: 550px) {
-  .profile__btn:first-of-type {
+  .profile__btn {
     margin-top: 362px;
     margin-bottom: 14px;
   }

@@ -29,6 +29,14 @@ const MoviesCard = ({
     });
   }, []);
 
+  function getTimeFromMins(duration) {
+    let hours = Math.trunc(duration / 60);
+    let minutes = duration % 60;
+    return `${hours + "ч " + minutes + "мин"}`;
+  }
+
+  const adjustedTime = getTimeFromMins(duration);
+
   const handleCardClick = () => {
     if (!isClicked) {
       saveMovie(
@@ -69,7 +77,7 @@ const MoviesCard = ({
         <div className="moviesCard__container-description">
           <div className="moviesCard__container-text">
             <h2 className="moviesCard__title">{nameRU}</h2>
-            <p className="moviesCard__paragraph">{duration}</p>
+            <p className="moviesCard__paragraph">{adjustedTime}</p>
           </div>
           <div
             className={`moviesCard__container-like ${

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SavedMovies.css";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";

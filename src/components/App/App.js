@@ -10,14 +10,20 @@ import Register from "../Register/Register";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import mainApi from "../../utils/MainApi";
 import auth from "../../utils/Auth";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [isPopupMenuOpen, setIsPopupMenuOpen] = useState(false);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [uploadPageWithSavedMovies, setUlpoadPageWithSavedMovies] =
     useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
   const [errorStatus, setErrorStatus] = useState();
+  const [errorStatusLogin, setErrorStatusLogin] = useState();
+  const [errorStatusRegister, setErrorStatusRegister] = useState();
+  const [isSuccess, setIsSuccess] = useState(false);
   const [loggedIn, setLoggedIn] = useState();
+  const [userData, setUserData] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +34,11 @@ function App() {
           localStorage.setItem("BeatfilmMovies", JSON.stringify(res));
           setUlpoadPageWithSavedMovies(true);
         })
+        .catch((e) => console.log(e));
+
+      mainApi
+        .getUserInfo()
+        .then((res) => setUserData(res))
         .catch((e) => console.log(e));
     }
   }, [loggedIn]);
@@ -52,7 +63,7 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      navigate("/movies");
+      navigate("/movies", { replace: true });
     }
   }, [loggedIn]);
 
@@ -62,19 +73,20 @@ function App() {
 
   const closeAllPopups = () => {
     setIsPopupMenuOpen(false);
+    setIsInfoTooltipOpen(false);
   };
   const signin = (email, password) => {
     auth
       .signin(email, password)
       .then((res) => {
-        setErrorStatus("");
+        setErrorStatusLogin("");
         localStorage.setItem("token", res.token);
         setLoggedIn(true);
         navigate("/movies");
       })
       .catch((e) => {
         console.log(e);
-        setErrorStatus(e);
+        setErrorStatusLogin(e);
       });
   };
 
@@ -82,12 +94,29 @@ function App() {
     auth
       .signup(name, email, password)
       .then(() => {
-        setErrorStatus("");
+        setErrorStatusRegister("");
         signin(email, password);
       })
       .catch((e) => {
         console.log(e);
+        setErrorStatusRegister(e);
+      });
+  };
+
+  const updateUserInfo = (name, email) => {
+    mainApi
+      .updateUserInfo(name, email)
+      .then((res) => {
+        setUserData(res);
+        setErrorStatus("");
+        setIsSuccess(true);
+        setIsInfoTooltipOpen(true);
+      })
+      .catch((e) => {
+        console.log(e);
         setErrorStatus(e);
+        setIsSuccess(false);
+        setIsInfoTooltipOpen(true);
       });
   };
 
@@ -133,14 +162,23 @@ function App() {
       .catch((e) => console.log(e));
   };
 
+  const exit = () => {
+    setErrorStatus("");
+    localStorage.removeItem("token");
+    navigate("/");
+    setLoggedIn(false);
+  };
+
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Main loggedIn={loggedIn} />} />
+        <Route exact path="/" element={<Main loggedIn={loggedIn} />} />
         <Route
           path="/movies"
           element={
-            <Movies
+            <ProtectedRoute
+              path="/movies"
+              element={Movies}
               popupMenuOpen={popupMenuOpen}
               isPopupMenuOpen={isPopupMenuOpen}
               closeAllPopups={closeAllPopups}
@@ -154,7 +192,9 @@ function App() {
         <Route
           path="/saved-movies"
           element={
-            <SavedMovies
+            <ProtectedRoute
+              path="/saved-movies"
+              element={SavedMovies}
               popupMenuOpen={popupMenuOpen}
               isPopupMenuOpen={isPopupMenuOpen}
               closeAllPopups={closeAllPopups}
@@ -165,25 +205,35 @@ function App() {
           }
         />
         <Route
-          path="/signup"
-          element={<Register signup={signup} errorStatus={errorStatus} />}
-        />
-        <Route
-          path="/signin"
-          element={<Login signin={signin} errorStatus={errorStatus} />}
-        />
-        <Route
           path="/profile"
           element={
-            <Profile
+            <ProtectedRoute
+              path="/profile"
+              element={Profile}
               popupMenuOpen={popupMenuOpen}
               isPopupMenuOpen={isPopupMenuOpen}
               closeAllPopups={closeAllPopups}
               loggedIn={loggedIn}
+              userData={userData}
+              updateUserInfo={updateUserInfo}
+              isSuccess={isSuccess}
+              isInfoTooltipOpen={isInfoTooltipOpen}
+              errorStatus={errorStatus}
+              exit={exit}
             />
           }
         />
-        <Route path="/PageNotFound" element={<PageNotFound />} />
+        <Route
+          path="/signup"
+          element={
+            <Register signup={signup} errorStatus={errorStatusRegister} />
+          }
+        />
+        <Route
+          path="/signin"
+          element={<Login signin={signin} errorStatus={errorStatusLogin} />}
+        />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
