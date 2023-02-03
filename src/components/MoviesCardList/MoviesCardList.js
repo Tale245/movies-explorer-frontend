@@ -21,19 +21,19 @@ const MoviesCardList = ({
   const [count, setCount] = useState(3);
   const [isMoreThreeCards, setIsMoreThreeCards] = useState(false);
 
-  // useEffect(() => {
-  //   window.addEventListener("resize", (resize) => {
-  //     if (resize.currentTarget.innerWidth >= 1214) {
-  //       setStep(12);
-  //     } else if (resize.currentTarget.innerWidth >= 701) {
-  //       setStep(8);
-  //       setCount(3);
-  //     } else if (resize.currentTarget.innerWidth < 701) {
-  //       setStep(5);
-  //       setCount(2);
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    window.addEventListener("resize", (resize) => {
+      if (resize.currentTarget.innerWidth >= 1214) {
+        setStep(12);
+      } else if (resize.currentTarget.innerWidth >= 701) {
+        setStep(8);
+        setCount(3);
+      } else if (resize.currentTarget.innerWidth < 701) {
+        setStep(5);
+        setCount(2);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (!isSavedMovies) {
@@ -56,7 +56,7 @@ const MoviesCardList = ({
   const whatMovie = isSavedMovies
     ? whatSavedMovies
     : foundMoviesArray.slice(0, step);
-
+  console.log(foundMoviesArray)
   return (
     <section className="moviesCardList">
       {notFound && <p className="moviesCardList__paragraph">{notFoundText}</p>}
@@ -66,7 +66,7 @@ const MoviesCardList = ({
         <div className="moviesCardList__container">
           {whatMovie.slice(0, step).map((item) => (
             <MoviesCard
-              key={isSavedMovies ? item.movieId : item.id}
+              key={isSavedMovies ? item._id : item.id}
               country={item.country}
               director={item.director}
               duration={item.duration}

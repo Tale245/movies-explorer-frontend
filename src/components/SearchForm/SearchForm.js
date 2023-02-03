@@ -17,20 +17,6 @@ const SearchForm = ({
   setNotFound,
   setNotFoundText,
 }) => {
-  useEffect(() => {
-   filterArray(
-        oldArray,
-        newArray,
-        setNewArray,
-        inputValue,
-        tempArray,
-        checkboxValue,
-        localStorageName,
-        setNotFound,
-        setNotFoundText
-      );
-  }, [checkboxValue]);
-
   const onChange = (e) => {
     searchInputValue(e.target.value);
     localStorage.setItem(nameSearchInputValue, e.target.value);

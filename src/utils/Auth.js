@@ -7,7 +7,6 @@ class Auth {
     if (res.ok) {
       return res.json();
     } else {
-      debugger
       return Promise.reject(res.status);
     }
   }
