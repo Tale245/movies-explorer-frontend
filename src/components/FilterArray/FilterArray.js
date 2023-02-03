@@ -27,7 +27,7 @@ export const filterArray = (
       setNotFoundText("");
       tempArray.push(item);
       localStorage.setItem(localStorageName, JSON.stringify(tempArray));
-      setNewArray(JSON.parse(localStorage.getItem(localStorageName)));
+      setNewArray(tempArray);
     } else if (tempArray.length === 0) {
       localStorage.setItem(localStorageName, JSON.stringify([]));
       setNewArray(JSON.parse(localStorage.getItem(localStorageName)));

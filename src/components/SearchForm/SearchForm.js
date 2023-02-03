@@ -10,6 +10,7 @@ const SearchForm = ({
   inputValue,
   tempArray,
   checkboxValue,
+  checkboxMoviesValue,
   localStorageName,
   searchInputValue,
   nameSearchInputValue,
@@ -19,8 +20,34 @@ const SearchForm = ({
 }) => {
   const onChange = (e) => {
     searchInputValue(e.target.value);
-    localStorage.setItem(nameSearchInputValue, e.target.value);
   };
+
+  useEffect(() => {
+    localStorage.setItem(localStorageName, JSON.stringify([]));
+  }, [])
+
+  useEffect(() => {
+    if (checkboxValue) {
+      newArray.filter((item) => {
+        if (item.duration < 40) {
+          tempArray.push(item);
+          setNewArray(tempArray);
+        }
+      });
+    } else if (!checkboxValue) {
+      filterArray(
+        oldArray,
+        newArray,
+        setNewArray,
+        inputValue,
+        tempArray,
+        checkboxValue,
+        localStorageName,
+        setNotFound,
+        setNotFoundText
+      );
+    }
+  }, [checkboxValue]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -35,6 +62,7 @@ const SearchForm = ({
       setNotFound,
       setNotFoundText
     );
+    localStorage.setItem(nameSearchInputValue, inputValue);
   };
 
   return (

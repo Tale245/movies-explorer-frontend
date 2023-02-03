@@ -56,7 +56,6 @@ const MoviesCardList = ({
   const whatMovie = isSavedMovies
     ? whatSavedMovies
     : foundMoviesArray.slice(0, step);
-  console.log(foundMoviesArray)
   return (
     <section className="moviesCardList">
       {notFound && <p className="moviesCardList__paragraph">{notFoundText}</p>}
