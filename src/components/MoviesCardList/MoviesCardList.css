@@ -1,2 +1,13 @@
 @import url(../../blocks/moviesCardList/moviesCardList.css);
 @import url(../../blocks/moviesCardList/__container/moviesCardList__container.css);
+
+.moviesCardList__paragraph {
+  margin: 0 auto;
+  text-decoration: none;
+  font-family: inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}

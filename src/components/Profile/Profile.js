@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import "./Profile.css";
@@ -9,7 +10,6 @@ const Profile = ({
   isPopupMenuOpen,
   closeAllPopups,
   loggedIn,
-  userData,
   updateUserInfo,
   isSuccess,
   isInfoTooltipOpen,
@@ -22,8 +22,9 @@ const Profile = ({
     formState: { errors, isValid },
   } = useForm({ mode: "onChange" });
 
-  const [nameValue, setNameValue] = useState(userData.name);
-  const [emailValue, setEmailValue] = useState(userData.email);
+  const currentUser = useContext(CurrentUserContext)
+  const [nameValue, setNameValue] = useState(currentUser.name);
+  const [emailValue, setEmailValue] = useState(currentUser.email);
 
   const onSubmit = (data) => {
     updateUserInfo(data.name, data.email);
@@ -31,7 +32,7 @@ const Profile = ({
   let disabledBtn = false;
 
   const comparisonValues = () => {
-    if (emailValue === userData.email) {
+    if (emailValue === currentUser.email) {
       disabledBtn = true;
     }
   };
@@ -48,7 +49,7 @@ const Profile = ({
       <section className="profile">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="profile__container">
-            <h1 className="profile__title">Привет, {userData.name}</h1>
+            <h1 className="profile__title">Привет, {currentUser.name}</h1>
             <div className="profile__container-input">
               <p className="profile__paragraph">Имя</p>
               <input
@@ -62,7 +63,7 @@ const Profile = ({
                 className={`profile__input ${
                   errors?.name && "profile__input_error"
                 }`}
-                defaultValue={userData.name}
+                defaultValue={currentUser.name}
               />
             </div>
             <div className="profile__container-input">
@@ -79,7 +80,7 @@ const Profile = ({
                 className={`profile__input ${
                   errors?.email && "profile__input_error"
                 }`}
-                defaultValue={userData.email}
+                defaultValue={currentUser.email}
               />
             </div>
             <button

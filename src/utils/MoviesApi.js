@@ -9,7 +9,7 @@ class MoviesApi {
     if (res.ok) {
       return res.json();
     } else {
-      return Promise.reject(`Ошибка BeatfilmMoviesApi ${res.status}`);
+      return Promise.reject(res);
     }
   }
 

@@ -18,13 +18,15 @@ const MoviesCard = ({
   isSavedMovies,
   deleteSavedMovies,
   savedMovies,
+  setFoundSavedMoviesArray,
+  foundSavedMoviesArray,
 }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     savedMovies.filter((item) => {
       if (movieId === item.movieId) {
-        setIsClicked(true)
+        setIsClicked(true);
       }
     });
   }, []);
@@ -64,16 +66,29 @@ const MoviesCard = ({
 
   const handleCardDelete = () => {
     deleteSavedMovies(movieId);
+    foundSavedMoviesArray.filter((item) => {
+      if (item._id.includes(movieId)) {
+        const index = foundSavedMoviesArray.indexOf(item);
+        if (index > -1) {
+          foundSavedMoviesArray.splice(index, 1);
+          localStorage.setItem(
+            "foundSavedMovies",
+            JSON.stringify(foundSavedMoviesArray)
+          );
+        }
+      }
+    });
   };
-
   return (
     <>
       <div className="moviesCard">
-        <img
-          className="moviesCard__image"
-          src={isSavedMovies ? image : `https://api.nomoreparties.co${image}`}
-          alt="постер к фильму"
-        />
+        <a href={trailerLink} target="_blank">
+          <img
+            className="moviesCard__image"
+            src={isSavedMovies ? image : `https://api.nomoreparties.co${image}`}
+            alt="постер к фильму"
+          />
+        </a>
         <div className="moviesCard__container-description">
           <div className="moviesCard__container-text">
             <h2 className="moviesCard__title">{nameRU}</h2>

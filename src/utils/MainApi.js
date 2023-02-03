@@ -7,7 +7,7 @@ class MainApi {
     if (res.ok) {
       return res.json();
     } else {
-      return Promise.reject(`Ошибка в MainApi: ${res.status}`);
+      return Promise.reject(res);
     }
   }
 

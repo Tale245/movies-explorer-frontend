@@ -11,30 +11,44 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import mainApi from "../../utils/MainApi";
 import auth from "../../utils/Auth";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
   const [isPopupMenuOpen, setIsPopupMenuOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [uploadPageWithSavedMovies, setUlpoadPageWithSavedMovies] =
     useState(false);
-  const [savedMovies, setSavedMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState(
+    JSON.parse(localStorage.getItem("savedMovies"))
+  );
   const [errorStatus, setErrorStatus] = useState();
+  const [errorStatusMovies, setErrorStatusMovies] = useState();
+  const [errorStatusSavedMovies, setErrorStatusSavedMovies] = useState();
   const [errorStatusLogin, setErrorStatusLogin] = useState();
   const [errorStatusRegister, setErrorStatusRegister] = useState();
   const [isSuccess, setIsSuccess] = useState(false);
   const [loggedIn, setLoggedIn] = useState();
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState({});
+  const [usePreloaderInMovies, setUsePreloaderInMovies] = useState(false)
+  const [usePreloaderInSavedMovies, setUsePreloaderInSavedMovies] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
+    setUsePreloaderInMovies(true)
     if (loggedIn) {
       moviesApi
         .getBeatfilmMovies()
         .then((res) => {
           localStorage.setItem("BeatfilmMovies", JSON.stringify(res));
           setUlpoadPageWithSavedMovies(true);
+          setUsePreloaderInMovies(false)
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          if(e.status){
+            console.log(`Ошибка в beatfilmMovies:`, e.status)
+            setErrorStatusMovies(e.status)
+          }
+        });
 
       mainApi
         .getUserInfo()
@@ -49,7 +63,10 @@ function App() {
         localStorage.setItem("savedMovies", JSON.stringify(res));
         setSavedMovies(JSON.parse(localStorage.getItem("savedMovies")));
         setUlpoadPageWithSavedMovies(false);
-      });
+      }).catch((e) => {
+        console.log('Ошибка в сохраненных фильмах:', e.status)
+        setErrorStatusSavedMovies(e.status)
+      })
     }
   }, [uploadPageWithSavedMovies]);
 
@@ -171,6 +188,7 @@ function App() {
 
   return (
     <div>
+      <CurrentUserContext.Provider value={userData}>
       <Routes>
         <Route exact path="/" element={<Main loggedIn={loggedIn} />} />
         <Route
@@ -186,6 +204,8 @@ function App() {
               deleteSavedMovies={deleteSavedMovies}
               savedMovies={savedMovies}
               loggedIn={loggedIn}
+              errorStatusMovies={errorStatusMovies}
+              usePreloader={usePreloaderInMovies}
             />
           }
         />
@@ -201,6 +221,9 @@ function App() {
               deleteSavedMovies={deleteSavedMovies}
               savedMovies={savedMovies}
               loggedIn={loggedIn}
+              usePreloader={usePreloaderInSavedMovies}
+              setSavedMovies={setSavedMovies}
+              errorStatusSavedMovies={errorStatusSavedMovies}
             />
           }
         />
@@ -235,6 +258,7 @@ function App() {
         />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      </CurrentUserContext.Provider>
     </div>
   );
 }
