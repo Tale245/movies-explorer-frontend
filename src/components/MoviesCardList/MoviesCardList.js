@@ -48,14 +48,16 @@ const MoviesCardList = ({
   const handleStep = () => {
     setStep(step + count);
   };
-  const whatSavedMovies =
+  const whatSavedMoviesArray =
     isSavedMovies && foundSavedMoviesArray.length > 0
       ? foundSavedMoviesArray
       : savedMovies;
+  
+  const whatMovieArray = foundMoviesArray === null ? [] : foundMoviesArray
 
   const whatMovie = isSavedMovies
-    ? whatSavedMovies
-    : foundMoviesArray.slice(0, step);
+    ? whatSavedMoviesArray
+    : whatMovieArray
   return (
     <section className="moviesCardList">
       {notFound && <p className="moviesCardList__paragraph">{notFoundText}</p>}

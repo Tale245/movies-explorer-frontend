@@ -1,6 +1,6 @@
 class MainApi {
   constructor() {
-    this._baseUrl = "http://localhost:3001";
+    this._baseUrl = "http://project-movies-479.nomoredomains.club";
   }
 
   _checkResponse(res) {

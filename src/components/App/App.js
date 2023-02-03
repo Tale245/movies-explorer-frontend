@@ -98,6 +98,10 @@ function App() {
       .then((res) => {
         setErrorStatusLogin("");
         localStorage.setItem("token", res.token);
+        localStorage.setItem("BeatfilmMovies", JSON.stringify([]));
+        localStorage.setItem("savedMovies", JSON.stringify([]));
+        localStorage.setItem('searchSavedInputTargetValue', '')
+        localStorage.setItem('searchInputTargetValue', '')
         setLoggedIn(true);
         navigate("/movies");
       })

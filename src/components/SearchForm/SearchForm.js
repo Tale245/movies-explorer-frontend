@@ -46,6 +46,7 @@ const SearchForm = ({
   }, [checkboxValue]);
 
   const onSubmit = (e) => {
+
     e.preventDefault();
     filterArray(
       oldArray,
