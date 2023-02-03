@@ -23,10 +23,6 @@ const SearchForm = ({
   };
 
   useEffect(() => {
-    localStorage.setItem(localStorageName, JSON.stringify([]));
-  }, [])
-
-  useEffect(() => {
     if (checkboxValue) {
       newArray.filter((item) => {
         if (item.duration < 40) {
@@ -77,7 +73,11 @@ const SearchForm = ({
           />
           <button className="searchForm__submit-button">Найти</button>
         </div>
-        <FilterCheckbox checkboxValue={checkboxValue} setValue={setValue} />
+        <FilterCheckbox
+          checkboxValue={checkboxValue}
+          setValue={setValue}
+          localStorageName={localStorageName}
+        />
       </form>
     </>
   );
