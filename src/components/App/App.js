@@ -29,24 +29,26 @@ function App() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [loggedIn, setLoggedIn] = useState();
   const [userData, setUserData] = useState({});
-  const [usePreloaderInMovies, setUsePreloaderInMovies] = useState(false)
-  const [usePreloaderInSavedMovies, setUsePreloaderInSavedMovies] = useState(false)
+  const [usePreloaderInMovies, setUsePreloaderInMovies] = useState(false);
+  const [usePreloaderInSavedMovies, setUsePreloaderInSavedMovies] =
+    useState(false);
+  const [newInputRequest, setNewInputRequest] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
-    setUsePreloaderInMovies(true)
+    setUsePreloaderInMovies(true);
     if (loggedIn) {
       moviesApi
         .getBeatfilmMovies()
         .then((res) => {
           localStorage.setItem("BeatfilmMovies", JSON.stringify(res));
           setUlpoadPageWithSavedMovies(true);
-          setUsePreloaderInMovies(false)
+          setUsePreloaderInMovies(false);
         })
         .catch((e) => {
-          if(e.status){
-            console.log(`Ошибка в beatfilmMovies:`, e.status)
-            setErrorStatusMovies(e.status)
+          if (e.status) {
+            console.log(`Ошибка в beatfilmMovies:`, e.status);
+            setErrorStatusMovies(e.status);
           }
         });
 
@@ -58,15 +60,22 @@ function App() {
   }, [loggedIn]);
 
   useEffect(() => {
+    setNewInputRequest(true)
+  }, [])
+
+  useEffect(() => {
     if (loggedIn) {
-      mainApi.getSavedMovies().then((res) => {
-        localStorage.setItem("savedMovies", JSON.stringify(res));
-        setSavedMovies(JSON.parse(localStorage.getItem("savedMovies")));
-        setUlpoadPageWithSavedMovies(false);
-      }).catch((e) => {
-        console.log('Ошибка в сохраненных фильмах:', e.status)
-        setErrorStatusSavedMovies(e.status)
-      })
+      mainApi
+        .getSavedMovies()
+        .then((res) => {
+          localStorage.setItem("savedMovies", JSON.stringify(res));
+          setSavedMovies(JSON.parse(localStorage.getItem("savedMovies")));
+          setUlpoadPageWithSavedMovies(false);
+        })
+        .catch((e) => {
+          console.log("Ошибка в сохраненных фильмах:", e.status);
+          setErrorStatusSavedMovies(e.status);
+        });
     }
   }, [uploadPageWithSavedMovies]);
 
@@ -99,9 +108,9 @@ function App() {
         setErrorStatusLogin("");
         localStorage.setItem("token", res.token);
         localStorage.setItem("BeatfilmMovies", JSON.stringify([]));
+        localStorage.setItem("foundMovies", JSON.stringify([]));
         localStorage.setItem("savedMovies", JSON.stringify([]));
-        localStorage.setItem('searchSavedInputTargetValue', '')
-        localStorage.setItem('searchInputTargetValue', '')
+        localStorage.setItem("searchInputTargetValue", "");
         setLoggedIn(true);
         navigate("/movies");
       })
@@ -186,6 +195,12 @@ function App() {
   const exit = () => {
     setErrorStatus("");
     localStorage.removeItem("token");
+    localStorage.removeItem("BeatfilmMovies")
+    localStorage.removeItem("savedMovies");
+    localStorage.removeItem("searchInputTargetValue");
+    localStorage.removeItem("savedMovies");
+    localStorage.removeItem("foundMovies");
+    localStorage.removeItem("checkboxValue");
     navigate("/");
     setLoggedIn(false);
   };
@@ -193,75 +208,79 @@ function App() {
   return (
     <div>
       <CurrentUserContext.Provider value={userData}>
-      <Routes>
-        <Route exact path="/" element={<Main loggedIn={loggedIn} />} />
-        <Route
-          path="/movies"
-          element={
-            <ProtectedRoute
-              path="/movies"
-              element={Movies}
-              popupMenuOpen={popupMenuOpen}
-              isPopupMenuOpen={isPopupMenuOpen}
-              closeAllPopups={closeAllPopups}
-              saveMovie={saveMovie}
-              deleteSavedMovies={deleteSavedMovies}
-              savedMovies={savedMovies}
-              loggedIn={loggedIn}
-              errorStatusMovies={errorStatusMovies}
-              usePreloader={usePreloaderInMovies}
-            />
-          }
-        />
-        <Route
-          path="/saved-movies"
-          element={
-            <ProtectedRoute
-              path="/saved-movies"
-              element={SavedMovies}
-              popupMenuOpen={popupMenuOpen}
-              isPopupMenuOpen={isPopupMenuOpen}
-              closeAllPopups={closeAllPopups}
-              deleteSavedMovies={deleteSavedMovies}
-              savedMovies={savedMovies}
-              loggedIn={loggedIn}
-              usePreloader={usePreloaderInSavedMovies}
-              setSavedMovies={setSavedMovies}
-              errorStatusSavedMovies={errorStatusSavedMovies}
-            />
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute
-              path="/profile"
-              element={Profile}
-              popupMenuOpen={popupMenuOpen}
-              isPopupMenuOpen={isPopupMenuOpen}
-              closeAllPopups={closeAllPopups}
-              loggedIn={loggedIn}
-              userData={userData}
-              updateUserInfo={updateUserInfo}
-              isSuccess={isSuccess}
-              isInfoTooltipOpen={isInfoTooltipOpen}
-              errorStatus={errorStatus}
-              exit={exit}
-            />
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <Register signup={signup} errorStatus={errorStatusRegister} />
-          }
-        />
-        <Route
-          path="/signin"
-          element={<Login signin={signin} errorStatus={errorStatusLogin} />}
-        />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+        <Routes>
+          <Route exact path="/" element={<Main loggedIn={loggedIn} />} />
+          <Route
+            path="/movies"
+            element={
+              <ProtectedRoute
+                path="/movies"
+                element={Movies}
+                popupMenuOpen={popupMenuOpen}
+                isPopupMenuOpen={isPopupMenuOpen}
+                closeAllPopups={closeAllPopups}
+                saveMovie={saveMovie}
+                deleteSavedMovies={deleteSavedMovies}
+                savedMovies={savedMovies}
+                loggedIn={loggedIn}
+                errorStatusMovies={errorStatusMovies}
+                usePreloader={usePreloaderInMovies}
+                newInputRequest={newInputRequest}
+                setNewInputRequest={setNewInputRequest}
+              />
+            }
+          />
+          <Route
+            path="/saved-movies"
+            element={
+              <ProtectedRoute
+                path="/saved-movies"
+                element={SavedMovies}
+                popupMenuOpen={popupMenuOpen}
+                isPopupMenuOpen={isPopupMenuOpen}
+                closeAllPopups={closeAllPopups}
+                deleteSavedMovies={deleteSavedMovies}
+                savedMovies={savedMovies}
+                loggedIn={loggedIn}
+                usePreloader={usePreloaderInSavedMovies}
+                setSavedMovies={setSavedMovies}
+                errorStatusSavedMovies={errorStatusSavedMovies}
+                newInputRequest={newInputRequest}
+                setNewInputRequest={setNewInputRequest}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute
+                path="/profile"
+                element={Profile}
+                popupMenuOpen={popupMenuOpen}
+                isPopupMenuOpen={isPopupMenuOpen}
+                closeAllPopups={closeAllPopups}
+                loggedIn={loggedIn}
+                userData={userData}
+                updateUserInfo={updateUserInfo}
+                isSuccess={isSuccess}
+                isInfoTooltipOpen={isInfoTooltipOpen}
+                errorStatus={errorStatus}
+                exit={exit}
+              />
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Register signup={signup} errorStatus={errorStatusRegister} />
+            }
+          />
+          <Route
+            path="/signin"
+            element={<Login signin={signin} errorStatus={errorStatusLogin} />}
+          />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
       </CurrentUserContext.Provider>
     </div>
   );

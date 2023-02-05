@@ -15,6 +15,8 @@ const Movies = ({
   loggedIn,
   errorStatusMovies,
   usePreloader,
+  newInputRequest,
+  setNewInputRequest
 }) => {
   const isThereAnArray =
     JSON.parse(localStorage.getItem("foundMovies")) === null
@@ -32,7 +34,12 @@ const Movies = ({
   );
   const [notFound, setNotFound] = useState(false);
   const [notFoundText, setNotFoundText] = useState("");
-  const [value, setValue] = useState(false);
+  const tempValue=
+  JSON.parse(localStorage.getItem("checkboxValue")) === null
+    ? false
+    : JSON.parse(localStorage.getItem("checkboxValue"));
+
+  const [value, setValue] = useState(tempValue);
   let tempArray = [];
 
   useEffect(() => {
@@ -73,6 +80,8 @@ const Movies = ({
             setNotFound={setNotFound}
             setNotFoundText={setNotFoundText}
             setValue={setValue}
+            isSavedMovies={false}
+            setNewInputRequest={setNewInputRequest}
           />
           <MoviesCardList
             foundMoviesArray={foundMoviesArray}
@@ -83,6 +92,8 @@ const Movies = ({
             notFound={notFound}
             notFoundText={notFoundText}
             usePreloader={usePreloader}
+            newInputRequest={newInputRequest}
+            setNewInputRequest={setNewInputRequest}
           />
         </div>
       </section>

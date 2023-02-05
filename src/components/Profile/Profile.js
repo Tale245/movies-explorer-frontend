@@ -32,7 +32,7 @@ const Profile = ({
   let disabledBtn = false;
 
   const comparisonValues = () => {
-    if (emailValue === currentUser.email) {
+    if (nameValue === currentUser.name && emailValue === currentUser.email) {
       disabledBtn = true;
     }
   };
@@ -70,7 +70,7 @@ const Profile = ({
               <p className="profile__paragraph">E-mail</p>
               <input
                 {...register("email", {
-                  required: true,
+                  required: false,
                   pattern: {
                     value:
                       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,

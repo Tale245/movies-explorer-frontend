@@ -9,14 +9,21 @@ export const filterArray = (
   checkboxValue,
   localStorageName,
   setNotFound,
-  setNotFoundText
+  setNotFoundText,
+  isSavedMovies
 ) => {
   oldArray.filter((item) => {
     if (inputValue === "") {
-      setNotFound(true);
-      setNotFoundText("Введите ключевое слово");
-      localStorage.setItem(localStorageName, JSON.stringify([]));
-      setNewArray(JSON.parse(localStorage.getItem(localStorageName)));
+      if (isSavedMovies) {
+        setNotFound(true);
+        setNotFoundText("Введите ключевое слово");
+        setNewArray([]);
+      } else {
+        setNotFound(true);
+        setNotFoundText("Введите ключевое слово");
+        localStorage.setItem(localStorageName, JSON.stringify([]));
+        setNewArray(JSON.parse(localStorage.getItem(localStorageName)));
+      }
     } else if (
       inputValue !== "" && checkboxValue
         ? item.nameRU.toLowerCase().includes(inputValue.toLowerCase()) &&
@@ -26,13 +33,23 @@ export const filterArray = (
       setNotFound(false);
       setNotFoundText("");
       tempArray.push(item);
-      localStorage.setItem(localStorageName, JSON.stringify(tempArray));
-      setNewArray(tempArray);
+      if (isSavedMovies) {
+        setNewArray(tempArray);
+      } else {
+        localStorage.setItem(localStorageName, JSON.stringify(tempArray));
+        setNewArray(tempArray);
+      }
     } else if (tempArray.length === 0) {
-      localStorage.setItem(localStorageName, JSON.stringify([]));
-      setNewArray(JSON.parse(localStorage.getItem(localStorageName)));
-      setNotFound(true);
-      setNotFoundText("Ничего не найдено");
+      if (isSavedMovies) {
+        setNotFound(true);
+        setNotFoundText("Ничего не найдено");
+        setNewArray([]);
+      } else {
+        localStorage.setItem(localStorageName, JSON.stringify([]));
+        setNewArray(JSON.parse(localStorage.getItem(localStorageName)));
+        setNotFound(true);
+        setNotFoundText("Ничего не найдено");
+      }
     }
   });
 };

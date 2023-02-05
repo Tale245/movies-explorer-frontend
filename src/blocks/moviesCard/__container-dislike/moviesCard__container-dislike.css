@@ -4,3 +4,8 @@
 .moviesCard__container-dislike:hover {
   opacity: 1;
 }
+@media screen and (max-width: 1000px){
+  .moviesCard__container-dislike{
+    opacity: 1;
+  }
+}

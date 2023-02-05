@@ -10,4 +10,5 @@
 @import url(../../blocks/header/__container-profile/header__container-profile.css);
 @import url(../../blocks/header/__сontainer-logo/header__container-logo.css);
 @import url(../../blocks/header/__movies/header__movies.css);
+@import url(../../blocks/header/__movies/_active/header__movies_active.css);
 @import url(../../blocks/header/__btn-menu/header__btn-menu.css);

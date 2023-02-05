@@ -6,7 +6,6 @@ import Preloader from "../Preloader/Preloader";
 
 const MoviesCardList = ({
   isSavedMovies,
-  beatfilmMovies,
   saveMovie,
   deleteSavedMovies,
   savedMovies,
@@ -16,34 +15,48 @@ const MoviesCardList = ({
   foundSavedMoviesArray,
   usePreloader,
   setFoundSavedMoviesArray,
+  newInputRequest,
+  setNewInputRequest,
 }) => {
   const [step, setStep] = useState(12);
   const [count, setCount] = useState(3);
-  const [isMoreThreeCards, setIsMoreThreeCards] = useState(false);
+  const [hiddenBtn, setHiddenBtn] = useState(false);
+  const widthApp = (size) => {
+    if (size >= 1214) {
+      setStep(12);
+      setCount(3);
+    } else if (size >= 701) {
+      setStep(8);
+      setCount(2);
+    } else if (size < 701) {
+      setStep(5);
+    }
+  };
+
+  useEffect(() => {
+    if (newInputRequest) {
+      widthApp(window.innerWidth);
+    }
+    setNewInputRequest(false);
+  }, [newInputRequest]);
 
   useEffect(() => {
     window.addEventListener("resize", (resize) => {
-      if (resize.currentTarget.innerWidth >= 1214) {
-        setStep(12);
-      } else if (resize.currentTarget.innerWidth >= 701) {
-        setStep(8);
-        setCount(3);
-      } else if (resize.currentTarget.innerWidth < 701) {
-        setStep(5);
-        setCount(2);
-      }
+      widthApp(resize.currentTarget.innerWidth);
     });
   }, []);
 
   useEffect(() => {
     if (!isSavedMovies) {
-      if (foundMoviesArray.length <= 3 || step >= foundMoviesArray.length) {
-        setIsMoreThreeCards(false);
+      if (foundMoviesArray.length <= step) {
+        setHiddenBtn(true);
       } else {
-        setIsMoreThreeCards(true);
+        setHiddenBtn(false);
       }
+    } else {
+      setHiddenBtn(true);
     }
-  }, [step]);
+  });
 
   const handleStep = () => {
     setStep(step + count);
@@ -52,12 +65,11 @@ const MoviesCardList = ({
     isSavedMovies && foundSavedMoviesArray.length > 0
       ? foundSavedMoviesArray
       : savedMovies;
-  
-  const whatMovieArray = foundMoviesArray === null ? [] : foundMoviesArray
-
-  const whatMovie = isSavedMovies
-    ? whatSavedMoviesArray
-    : whatMovieArray
+  const whatMovieArray =
+    foundMoviesArray === undefined || foundMoviesArray === null
+      ? []
+      : foundMoviesArray.slice(0, step);
+  const whatMovie = isSavedMovies ? whatSavedMoviesArray : whatMovieArray;
   return (
     <section className="moviesCardList">
       {notFound && <p className="moviesCardList__paragraph">{notFoundText}</p>}
@@ -65,7 +77,7 @@ const MoviesCardList = ({
         <Preloader />
       ) : (
         <div className="moviesCardList__container">
-          {whatMovie.slice(0, step).map((item) => (
+          {whatMovie.map((item) => (
             <MoviesCard
               key={isSavedMovies ? item._id : item.id}
               country={item.country}
@@ -93,7 +105,7 @@ const MoviesCardList = ({
           ))}
         </div>
       )}
-      {isMoreThreeCards && <BtnElse handleStep={handleStep} />}
+      {hiddenBtn === false && <BtnElse handleStep={handleStep} />}
     </section>
   );
 };

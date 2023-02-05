@@ -4,9 +4,9 @@
   width: 0;
   opacity: 0;
 }
-.filterCheckbox__input:checked + .filterCheckbox__slider {
+.filterCheckbox__input_active + .filterCheckbox__slider {
   background-color: #2be080;
 }
-.filterCheckbox__input:checked + .filterCheckbox__slider::before {
+.filterCheckbox__input_active + .filterCheckbox__slider::before {
   transform: translateX(16px);
 }

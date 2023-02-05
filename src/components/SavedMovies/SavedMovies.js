@@ -14,22 +14,20 @@ const SavedMovies = ({
   loggedIn,
   usePreloader,
   setSavedMovies,
-  errorStatusSavedMovies
+  errorStatusSavedMovies,
+  newInputRequest,
+  setNewInputRequest,
 }) => {
-  const isThereAnArray =
-    JSON.parse(localStorage.getItem("foundSavedMovies")) === null
-      ? []
-      : JSON.parse(localStorage.getItem("foundSavedMovies"));
-
-  const [foundSavedMoviesArray, setFoundSavedMoviesArray] =
-    useState(isThereAnArray);
-  const [searchSavedInputValue, setSearchSavedInputValue] = useState(
-    localStorage.getItem("searchSavedInputTargetValue")
-  );
+  const [foundSavedMoviesArray, setFoundSavedMoviesArray] = useState([]);
+  const [searchSavedInputValue, setSearchSavedInputValue] = useState("");
   const [notFound, setNotFound] = useState(false);
   const [notFoundText, setNotFoundText] = useState("");
   const [value, setValue] = useState(false);
   let tempArray = [];
+
+  if(foundSavedMoviesArray === null || foundSavedMoviesArray === undefined) {
+    setFoundSavedMoviesArray([])
+  }
 
   useEffect(() => {
     if (errorStatusSavedMovies) {
@@ -38,11 +36,13 @@ const SavedMovies = ({
         "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
       );
       setFoundSavedMoviesArray([]);
-      setSavedMovies([])
+      setSavedMovies([]);
     } else {
       setNotFound(false);
       setNotFoundText("");
-      setFoundSavedMoviesArray(JSON.parse(localStorage.getItem("foundSavedMovies")));
+      setFoundSavedMoviesArray(
+        JSON.parse(localStorage.getItem("foundSavedMovies"))
+      );
     }
   }, [errorStatusSavedMovies]);
 
@@ -64,12 +64,13 @@ const SavedMovies = ({
             inputValue={searchSavedInputValue}
             tempArray={tempArray}
             checkboxValue={value}
-            localStorageName="foundSavedMovies"
             searchInputValue={setSearchSavedInputValue}
-            nameSearchInputValue="searchSavedInputTargetValue"
             setNotFound={setNotFound}
             setNotFoundText={setNotFoundText}
             setValue={setValue}
+            isSavedMovies={true}
+            newInputRequest={newInputRequest}
+            setNewInputRequest={setNewInputRequest}
           />
           <MoviesCardList
             isSavedMovies={true}
@@ -80,6 +81,8 @@ const SavedMovies = ({
             foundSavedMoviesArray={foundSavedMoviesArray}
             usePreloader={usePreloader}
             setFoundSavedMoviesArray={setFoundSavedMoviesArray}
+            newInputRequest={newInputRequest}
+            setNewInputRequest={setNewInputRequest}
           />
         </div>
       </section>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 import { filterArray } from "../FilterArray/FilterArray";
@@ -10,13 +10,14 @@ const SearchForm = ({
   inputValue,
   tempArray,
   checkboxValue,
-  checkboxMoviesValue,
   localStorageName,
   searchInputValue,
   nameSearchInputValue,
   setValue,
   setNotFound,
   setNotFoundText,
+  isSavedMovies,
+  setNewInputRequest,
 }) => {
   const onChange = (e) => {
     searchInputValue(e.target.value);
@@ -27,7 +28,13 @@ const SearchForm = ({
       newArray.filter((item) => {
         if (item.duration < 40) {
           tempArray.push(item);
-          setNewArray(tempArray);
+          if (isSavedMovies) {
+            setNewArray(tempArray);
+          } else {
+            localStorage.setItem(localStorageName, JSON.stringify(tempArray));
+            setNewArray(tempArray);
+            setNewInputRequest(true);
+          }
         }
       });
     } else if (!checkboxValue) {
@@ -40,13 +47,14 @@ const SearchForm = ({
         checkboxValue,
         localStorageName,
         setNotFound,
-        setNotFoundText
+        setNotFoundText,
+        isSavedMovies
       );
+      setNewInputRequest(true);
     }
   }, [checkboxValue]);
 
   const onSubmit = (e) => {
-
     e.preventDefault();
     filterArray(
       oldArray,
@@ -57,9 +65,14 @@ const SearchForm = ({
       checkboxValue,
       localStorageName,
       setNotFound,
-      setNotFoundText
+      setNotFoundText,
+      isSavedMovies
     );
-    localStorage.setItem(nameSearchInputValue, inputValue);
+
+    if (isSavedMovies === false) {
+      setNewInputRequest(true);
+      localStorage.setItem(nameSearchInputValue, inputValue);
+    }
   };
 
   return (
@@ -78,6 +91,7 @@ const SearchForm = ({
           checkboxValue={checkboxValue}
           setValue={setValue}
           localStorageName={localStorageName}
+          isSavedMovies={isSavedMovies}
         />
       </form>
     </>

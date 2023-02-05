@@ -1,11 +1,21 @@
 import React from "react";
 import "./FilterCheckbox.css";
 
-const FilterCheckbox = ({ checkboxValue, setValue, localStorageName }) => {
+const FilterCheckbox = ({
+  checkboxValue,
+  setValue,
+  localStorageName,
+  isSavedMovies,
+}) => {
   const handleCheckboxValue = () => {
-    const storage = JSON.parse(localStorage.getItem(localStorageName)).length;
-    if (storage !== 0) {
+    if (isSavedMovies) {
       setValue(!checkboxValue);
+    } else {
+      const storage = JSON.parse(localStorage.getItem(localStorageName)).length;
+      if (storage !== 0) {
+        setValue(!checkboxValue);
+        localStorage.setItem("checkboxValue", !checkboxValue);
+      }
     }
   };
 
@@ -15,7 +25,10 @@ const FilterCheckbox = ({ checkboxValue, setValue, localStorageName }) => {
         <input
           onChange={handleCheckboxValue}
           value={checkboxValue}
-          className="filterCheckbox__input"
+          className={`filterCheckbox__input ${
+            checkboxValue === true &&
+            "filterCheckbox__input_active + filterCheckbox__slider filterCheckbox__input_active + filterCheckbox__slider::before "
+          }`}
           type="checkbox"
         />
         <span className="filterCheckbox__slider"></span>
