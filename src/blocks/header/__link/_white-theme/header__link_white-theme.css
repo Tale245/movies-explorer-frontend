@@ -1,0 +1,16 @@
+.header__link_white-theme {
+  margin: 0;
+  text-decoration: none;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  align-items: center;
+  color: #000000;
+}
+@media screen and (max-width: 920px) {
+  .header__link_white-theme {
+    display: none;
+  }
+}

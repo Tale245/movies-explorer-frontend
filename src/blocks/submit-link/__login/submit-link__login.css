@@ -1,0 +1,9 @@
+.submit-link__login {
+  padding-top: 220px;
+}
+@media screen and (max-width: 550px) {
+  .submit-link__login {
+    padding-top: 310px;
+    padding-bottom: 30px;
+  }
+}

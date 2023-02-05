@@ -1,0 +1,25 @@
+.promo__container {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding-top: 50px;
+}
+@media screen and (max-width: 1000px) {
+  .promo__container {
+    max-width: 768px;
+    padding-top: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 550px) {
+  .promo__container {
+    padding-top: 183px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .promo__container {
+    max-width: 320px;
+    padding-top: 183px;
+  }
+}

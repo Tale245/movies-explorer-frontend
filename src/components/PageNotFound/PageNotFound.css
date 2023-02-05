@@ -1,0 +1,5 @@
+@import url(../../blocks/pageNotFound/pageNotFound.css);
+@import url(../../blocks/pageNotFound/__container/pageNotFound__container.css);
+@import url(../../blocks/pageNotFound/__title/pageNotFound__title.css);
+@import url(../../blocks/pageNotFound/__paragraph/pageNotFound__paragraph.css);
+@import url(../../blocks/pageNotFound/__btn-back/pageNotFound__btn-back.css);

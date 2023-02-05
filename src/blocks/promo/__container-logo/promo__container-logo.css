@@ -1,0 +1,11 @@
+.promo__container-logo {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 1000px) {
+  .promo__container-logo {
+    justify-content: center;
+  }
+}

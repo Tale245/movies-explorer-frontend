@@ -1,0 +1,22 @@
+.aboutMe__image {
+  margin: 0;
+  width: 270px;
+  height: 327px;
+  background-image: url(../../../images/aboutMe__image.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+@media screen and (max-width: 950px) {
+  .aboutMe__image {
+    width: 255px;
+    height: 307px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .aboutMe__image {
+    width: 292px;
+    height: 352px;
+    margin-bottom: 40px;
+  }
+}

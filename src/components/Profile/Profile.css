@@ -1,0 +1,17 @@
+@import url(../../blocks/profile/profile.css);
+@import url(../../blocks/profile/__container/profile__container.css);
+@import url(../../blocks/profile/__title/profile__title.css);
+@import url(../../blocks/profile/__container-input/profile__container-input.css);
+@import url(../../blocks/profile/__paragraph/profile__paragraph.css);
+@import url(../../blocks/profile/__input/profile__input.css);
+@import url(../../blocks/profile/__input/_error/profile__input_error.css);
+@import url(../../blocks/profile/__btn/profile__btn.css);
+@import url(../../blocks/profile/__btn/_disabled/profile__btn_disabled.css);
+@import url(../../blocks/profile/__btn/_logout/profile__btn_logout.css);
+.profile__container-logout {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

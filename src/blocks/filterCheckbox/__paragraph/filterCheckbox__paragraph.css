@@ -1,0 +1,22 @@
+.filterCheckbox__paragraph {
+  margin: 0;
+  margin-bottom: 2px;
+  margin-left: 15px;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+}
+@media screen and (max-width: 768px) {
+  .filterCheckbox__paragraph {
+    margin-right: 16px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .filterCheckbox__paragraph {
+    font-size: 11px;
+    margin-left: 0px;
+  }
+}

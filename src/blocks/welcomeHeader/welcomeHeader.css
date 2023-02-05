@@ -1,0 +1,19 @@
+.welcomeHeader {
+  margin: 0;
+  padding-top: 70px;
+  padding-bottom: 41px;
+}
+@media screen and (max-width: 950px) {
+  .welcomeHeader {
+    padding-top: 232px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .welcomeHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+}

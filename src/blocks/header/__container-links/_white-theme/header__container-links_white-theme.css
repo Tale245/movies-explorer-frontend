@@ -1,0 +1,5 @@
+.header__container-links_white-theme {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}

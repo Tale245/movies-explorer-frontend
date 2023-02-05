@@ -1,0 +1,9 @@
+.profile__container-input {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.profile__container-input:first-of-type {
+  border-bottom: 1px solid #e8e8e8;
+}
