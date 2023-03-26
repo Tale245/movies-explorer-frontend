@@ -1,0 +1,16 @@
+.techs__icon {
+  margin: 0 auto;
+  width: 90px;
+  height: 60px;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .techs__icons {
+    width: 84px;
+    height: 57px;
+  }
+}

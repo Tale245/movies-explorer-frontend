@@ -1,0 +1,17 @@
+.filterCheckbox {
+  margin: 0;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+@media screen and (max-width: 768px) {
+  .filterCheckbox {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width: 620px) {
+  .filterCheckbox {
+    justify-content: center;
+  }
+}

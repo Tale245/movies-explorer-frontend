@@ -1,0 +1,22 @@
+.about-project__container-description {
+  margin: 0 auto;
+  padding-top: 70px;
+  padding-bottom: 110px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+@media screen and (max-width: 920px) {
+  .about-project__container-description {
+    gap: 40px;
+    padding-bottom: 90px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .about-project__container-description {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    flex-direction: column;
+    gap: 53px;
+  }
+}

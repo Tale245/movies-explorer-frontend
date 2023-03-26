@@ -1,0 +1,10 @@
+.footer__container-paragraph {
+  margin: 0;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 20px;
+}
+@media screen and (max-width: 620px) {
+  .footer__container-paragraph {
+    padding-bottom: 21px;
+  }
+}

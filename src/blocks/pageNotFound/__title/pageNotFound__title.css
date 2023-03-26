@@ -1,0 +1,17 @@
+.pageNotFound__title {
+  margin: 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 169px;
+  text-align: center;
+
+  color: #000000;
+}
+@media screen and (max-width: 550px) {
+  .pageNotFound__title {
+    font-size: 80px;
+    line-height: 97px;
+  }
+}

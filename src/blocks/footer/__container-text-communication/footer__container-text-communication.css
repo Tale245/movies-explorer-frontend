@@ -1,0 +1,15 @@
+.footer__container-text-communication {
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 620px) {
+  .footer__container-text-communication {
+    padding-top: 30px;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+}

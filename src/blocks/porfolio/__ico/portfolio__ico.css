@@ -1,0 +1,23 @@
+.portfolio__ico {
+  margin: 0;
+  text-decoration: none;
+  font-family: inter, Arial, Helvetica, sans-serif;
+  margin-bottom: 9px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 60px;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+@media screen and (max-width: 950px) {
+  .portfolio__ico {
+    font-size: 28px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .portfolio__ico {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

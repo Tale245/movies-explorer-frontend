@@ -1,0 +1,30 @@
+.moviesCard__image {
+  margin: 0;
+  width: 364px;
+  height: 203px;
+  object-fit: cover;
+}
+@media screen and (max-width: 768px) {
+  .moviesCard__image {
+    max-width: 340px;
+    max-height: 190px;
+  }
+}
+@media screen and (max-width: 730px) {
+  .moviesCard__image {
+    max-width: 329px;
+    max-height: 170px;
+  }
+}
+@media screen and (max-width: 670px) {
+  .moviesCard__image {
+    max-width: 309px;
+    max-height: 150px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .moviesCard__image {
+    max-width: 300px;
+    max-height: 168px;
+  }
+}

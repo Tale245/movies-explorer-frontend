@@ -1,0 +1,33 @@
+.profile__btn {
+  margin: 0;
+  border: none;
+  background: none;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+  cursor: pointer;
+}
+.profile__btn {
+  margin-top: 205px;
+  margin-bottom: 13px;
+}
+@media screen and (max-width: 550px) {
+  .profile__btn {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+@media screen and (max-width: 920px) {
+  .profile__btn {
+    margin-top: 195px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .profile__btn {
+    margin-top: 362px;
+    margin-bottom: 14px;
+  }
+}

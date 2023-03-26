@@ -1,0 +1,25 @@
+.header__btn-menu {
+  margin: 0;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: none;
+  background-image: url(../../../images/header__menu.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  display: none;
+}
+@media screen and (max-width: 920px) {
+  .header__btn-menu {
+    display: inline;
+  }
+}
+@media screen and (max-width: 550px) {
+  .header__btn-menu {
+    margin-top: 7px;
+    margin-right: 2px;
+    width: 37px;
+    height: 43px;
+  }
+}

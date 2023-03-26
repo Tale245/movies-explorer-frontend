@@ -1,0 +1,19 @@
+.about-project__element_dark {
+  width: 228px;
+  background-color: #000;
+}
+@media screen and (max-width: 820px) {
+  .about-project__element_dark {
+    width: 148px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .about-project__element_dark {
+    width: 140px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .about-project__element_dark {
+    width: 100px;
+  }
+}
